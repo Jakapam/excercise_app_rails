@@ -6,20 +6,30 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+  #Users
+
+  User.create(first_name: "Justin", last_name: "Man")
+  User.create(first_name: "Ben", last_name: "Lea")
+  User.create(first_name: "Mister", last_name: "Man")
+
  # Exercises
 
-  Exercise.new(name: "Bench Press",sets: 4, reps: 12, weight: 135)
-
-  Exercise.new(name: "Squats",sets: 4, reps: 10, weight: 135)
-
-  Exercise.new(name: "Shoulder Press",sets: 3, reps: 10, weight: 135)
-
-  Exercise.new(name: "Bicep Curls",sets: 5, reps: 8, weight: 135)
-
-  Exercise.new(name: "Deadlifts",sets: 4, reps: 6, weight: 135)
+  Exercise.create(name: "Bench Press")
+  Exercise.create(name: "Squats")
+  Exercise.create(name: "Shoulder Press")
+  Exercise.create(name: "Bicep Curls")
+  Exercise.create(name: "Deadlifts")
 
 
- # # Routines
- #
- # Routine.create
- # Routine.create
+ # Routines
+
+ Routine.create(name: "Chest Burster", user_id: 1)
+ Routine.create(name: "Legs for days", user_id: 2)
+ Routine.create(name: "Arms", user_id: 3)
+
+ #Exercise routines
+
+ ExerciseRoutine.create(routine_id: 1, exercise_id: 1, day_of_week: "monday", sets: 4, reps: 12, weight: 135)
+ ExerciseRoutine.create(routine_id: 2, exercise_id: 2, day_of_week: "tuesday", sets: 4, reps: 10, weight: 135)
+ ExerciseRoutine.create(routine_id: 2, exercise_id: 1, day_of_week: "monday", sets: 3, reps: 5, weight: 315)
+ ExerciseRoutine.create(routine_id: 3, exercise_id: 4, day_of_week: "wednesday", ,sets: 5, reps: 8, weight: 135)
