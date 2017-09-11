@@ -29,7 +29,7 @@
 
  #Exercise routines
 
- ExerciseRoutine.create(routine_id: 1, exercise_id: 1, day_of_week: "monday", sets: 4, reps: 12, weight: 135)
- ExerciseRoutine.create(routine_id: 2, exercise_id: 2, day_of_week: "tuesday", sets: 4, reps: 10, weight: 135)
- ExerciseRoutine.create(routine_id: 2, exercise_id: 1, day_of_week: "monday", sets: 3, reps: 5, weight: 315)
- ExerciseRoutine.create(routine_id: 3, exercise_id: 4, day_of_week: "wednesday", ,sets: 5, reps: 8, weight: 135)
+ RoutineExercise.create(routine_id: 1, exercise_id: 1, day_of_week: "monday", sets: 4, reps: 12, weight: 135)
+ RoutineExercise.create(routine_id: 2, exercise_id: 2, day_of_week: "tuesday", sets: 4, reps: 10, weight: 135)
+ RoutineExercise.create(routine_id: 2, exercise_id: 1, day_of_week: "monday", sets: 3, reps: 5, weight: 315)
+ RoutineExercise.create(routine_id: 3, exercise_id: 4, day_of_week: "wednesday",sets: 5, reps: 8, weight: 135)

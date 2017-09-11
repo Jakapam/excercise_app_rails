@@ -14,10 +14,6 @@ ActiveRecord::Schema.define(version: 20170911190025) do
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
-    t.integer "sets"
-    t.integer "reps"
-    t.float "time"
-    t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,11 +23,16 @@ ActiveRecord::Schema.define(version: 20170911190025) do
     t.integer "exercise_id"
     t.string "day_of_week"
     t.string "string"
+    t.integer "sets"
+    t.integer "reps"
+    t.float "time"
+    t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "routines", force: :cascade do |t|
+    t.string "name"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
