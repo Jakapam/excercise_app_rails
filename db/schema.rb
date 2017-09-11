@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 20170911190025) do
 
   create_table "exercises", force: :cascade do |t|
+    t.string "name"
     t.integer "sets"
     t.integer "reps"
     t.float "time"
