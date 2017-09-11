@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  routine_id: 1
+  exercise_id: 1
+  day_of_week: MyString
+  string: MyString
+
+two:
+  routine_id: 1
+  exercise_id: 1
+  day_of_week: MyString
+  string: MyString
