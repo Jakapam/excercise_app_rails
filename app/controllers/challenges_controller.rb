@@ -3,6 +3,12 @@ class ChallengesController < ApplicationController
   before_action :set_user, :set_challenge
   before_action :require_login, only: [:new, :create]
 
+  def complete
+    @challenge.complete
+    redirect_to user_challenges_path(@user)
+  end
+
+
   def accept
     @challenge.accept
     redirect_to user_challenges_path(@user)
@@ -41,7 +47,6 @@ class ChallengesController < ApplicationController
     @accepted_challenges = @user.accepted_challenges
     @rejected_challenges = @user.rejected_challenges
     @completed_challenges = @user.completed_challenges
-  
 
   end
 

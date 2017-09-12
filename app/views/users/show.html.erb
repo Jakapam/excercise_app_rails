@@ -14,9 +14,9 @@ Username: <%= @user.username %> <br>
 
  <br>
 
-<% if !@user.received_challenges.empty? %>
+<% if @user.received_challenges.size == @user.completed_challenges.size %>
   <%= link_to 'You Have Challenges From Friends', user_challenges_path(@user) %>
   <% elsif !@user.issued_challenges.empty? %>
-    <%= link_to 'Check On Your Issued Challenges', user_challenges_path(@user) %>
+  <%= link_to 'Check On Your Issued Challenges', user_challenges_path(@user) %>
 
   <% end %>

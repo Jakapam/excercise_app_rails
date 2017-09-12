@@ -30,16 +30,17 @@
       <%end%>
 
   <% if !@accepted_challenges.empty? %>
-
+  <h2>Accepted Challenges: </h2>
     <% @accepted_challenges.each do |accepted| %>
       <p>- - - </p>
      <p>Accepted Challenge:<%= accepted.exercise.name %></p>
-     <%=link_to "I actually don't feel too good...", reject_challenge_path(session[:user_id], received.id), method: "get"%>
+     <%=link_to "I actually don't feel too good...", reject_challenge_path(session[:user_id], accepted.id), method: "get"%>
+     <%=link_to "I DID IT!!!!!", complete_challenge_path(session[:user_id], accepted.id), method: "get"%>
      <% end %>
     <% end %>
 
     <% if !@completed_challenges.empty? %>
-
+    <h2>Completed Challenges: </h2>
       <% @completed_challenges.each do |completed| %>
         <p>- - - </p>
        <p>Completed Challenge:<%= completed.exercise.name %></p>

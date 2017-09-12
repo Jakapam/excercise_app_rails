@@ -16,11 +16,11 @@ class User < ApplicationRecord
   end
 
   def accepted_challenges
-    self.received_challenges.where("accepted = 'true' AND completed = 'false'")
+    self.received_challenges.where(accepted: true, completed: 'false')
   end
 
   def completed_challenges
-    self.received_challenges.where("completed = 'true'")
+    self.received_challenges.where(completed: true)
   end
 
 end
