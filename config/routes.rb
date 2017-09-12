@@ -2,11 +2,17 @@ Rails.application.routes.draw do
 
   root "users#welcome"
 
-  resources :users
+  resources :users do
+    resources :challenges
+  end
+
+
   resources :routines do
     resources :routine_exercises, only: [:new, :create]
   end
+
   resources :routine_exercises, except: [:new, :create]
+
   resources :exercises
 
   get "/signin" => "sessions#new"

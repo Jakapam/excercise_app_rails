@@ -10,10 +10,11 @@
 
   <body>
     <% if session[:user_id] %>
+      <p><%= link_to "ISSUE CHALLENGE!!!!!", new_user_challenge_path(session[:user_id])%></p>
       <p><%= link_to 'Return to your profile page', user_path(session[:user_id])%></p>
       <p><%=link_to "Log Out", signout_path, method: "delete"%></p>
     <%end%>
-    
+
     <%= yield %>
   </body>
 </html>

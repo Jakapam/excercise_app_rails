@@ -3,7 +3,9 @@ class RoutineExercise < ApplicationRecord
   belongs_to :exercise
 
   def name
-
+    if self.exercise.name
+      self.exercise.name
+    end
   end
 
   def name=(name)

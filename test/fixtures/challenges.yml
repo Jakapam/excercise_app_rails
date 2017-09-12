@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  challenger_id: 1
+  challengee_id: 1
+  accepted: false
+  completed: false
+  exercise_id: 1
+  reps: 1
+  weight: 1
+  time: 1.5
+
+two:
+  challenger_id: 1
+  challengee_id: 1
+  accepted: false
+  completed: false
+  exercise_id: 1
+  reps: 1
+  weight: 1
+  time: 1.5
