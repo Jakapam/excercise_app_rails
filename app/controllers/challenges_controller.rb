@@ -4,13 +4,14 @@ class ChallengesController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
   def accept
-    self.accept
-    render :show
+    @challenge.accept
+    redirect_to user_challenges_path(@user)
   end
 
   def reject
-    self.reject
-    render :show
+    @challenge.reject
+
+    redirect_to user_challenges_path(@user)
   end
 
   def new
@@ -36,6 +37,12 @@ class ChallengesController < ApplicationController
   def index
     @issued_challenges = Challenge.all.where("challenger_id = ? AND completed = 'false' AND accepted = 'false' AND rejected = 'false'", @user.id)
     @received_challenges = Challenge.all.where("challengee_id = ? AND completed = 'false' AND accepted = 'false' AND rejected = 'false'", @user.id)
+
+    @accepted_challenges = @user.accepted_challenges
+    @rejected_challenges = @user.rejected_challenges
+    @completed_challenges = @user.completed_challenges
+  
+
   end
 
 
