@@ -18,9 +18,12 @@ class UsersController < ApplicationController
 
   end
 
+
+
   def show
     @user = User.find(params[:id])
     @routines = @user.routines
+    @issued_challenges = @user.issued_challenges
   end
 
   def edit

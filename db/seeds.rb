@@ -9,8 +9,8 @@
   #Users
 
   User.create(first_name: "Justin", last_name: "Man", username: "test1", password: "test1")
-  User.create(first_name: "Ben", last_name: "Lea", username: "test2", password: "test1")
-  User.create(first_name: "Mister", last_name: "Man", username: "test3", password: "test1")
+  User.create(first_name: "Ben", last_name: "Lea", username: "test2", password: "test2")
+  User.create(first_name: "Mister", last_name: "Man", username: "test3", password: "test3")
 
  # Exercises
 
@@ -20,6 +20,11 @@
   Exercise.create(name: "Bicep Curls")
   Exercise.create(name: "Deadlifts")
 
+#challenges
+
+  Challenge.create(challenger_id: 1, challengee_id: 3, exercise_id: 5, sets: 1, reps: 1, weight: 1000)
+  Challenge.create(challenger_id: 3, challengee_id: 1, exercise_id: 1, sets: 1, reps: 1, weight: 225)
+  Challenge.create(challenger_id: 2, challengee_id: 1, exercise_id: 2, sets: 1, reps: 1, weight: 135)
 
  # Routines
 

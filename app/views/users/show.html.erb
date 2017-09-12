@@ -1,5 +1,5 @@
-<%= @user.to_s %> <br>
-<%= @user.username %> <br>
+Real Name: <%= @user.to_s %> <br>
+Username: <%= @user.username %> <br>
 
 
 <% if @routines.size > 1  %>
@@ -12,5 +12,11 @@
 
 <%= link_to 'Add Routine', new_routine_path %><br>
 
-**PLACEHOLDER*** <br>
---Challenges
+ <br>
+
+<% if !@user.received_challenges.empty? %>
+  <%= link_to 'You Have Challenges From Friends', user_challenges_path(@user) %>
+  <% elsif !@user.issued_challenges.empty? %>
+    <%= link_to 'Check On Your Issued Challenges', user_challenges_path(@user) %>
+
+  <% end %>

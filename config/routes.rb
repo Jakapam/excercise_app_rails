@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   resources :exercises
 
+
+  get "/users/:user_id/challenges/:id/accept" => "challenges#accept", as: 'accept_challenge'
+  get "/users/:user_id/challenges/:id/reject" => "challenges#reject", as: 'reject_challenge'
+
   get "/signin" => "sessions#new"
   post "/signin" => "sessions#create"
   delete "/signout" => "sessions#destroy"

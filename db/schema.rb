@@ -15,8 +15,9 @@ ActiveRecord::Schema.define(version: 20170912162729) do
   create_table "challenges", force: :cascade do |t|
     t.integer "challenger_id"
     t.integer "challengee_id"
-    t.boolean "accepted"
-    t.boolean "completed"
+    t.boolean "accepted", default: false
+    t.boolean "completed", default: false
+    t.boolean "rejected", default: false
     t.integer "exercise_id"
     t.integer "sets"
     t.integer "reps"

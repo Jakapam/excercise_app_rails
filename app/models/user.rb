@@ -11,4 +11,16 @@ class User < ApplicationRecord
     first_name + " " + last_name
   end
 
+  def rejected_challenges
+    self.issued_challenges.where("rejected = 'true'")
+  end
+
+  def accepted_challenges
+    self.received_challenges.where("accepted = 'true' AND completed = 'false'")
+  end
+
+  def completed_challenges
+    self.received_challenges.where("completed = 'true'")
+  end
+
 end
