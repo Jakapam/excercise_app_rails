@@ -1,4 +1,10 @@
-<%= form_for @routine_exercise do |f|%>
+<%= form_for @routine_exercise, :url => routine_routine_exercises_path(@routine) do |f|%>
 
-<%=f.submit %>
+  name: <%= f.text_field :name %><br>
+  Sets: <%= f.number_field :sets %><br>
+  Reps: <%= f.number_field :reps %><br>
+  Weight: <%= f.number_field :weight %><br>
+  Time: <%= f.number_field :time %><br>
+<%=f.submit "Add Exercise To This Routine"%>
+
 <%end%>

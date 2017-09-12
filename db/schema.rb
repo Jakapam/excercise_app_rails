@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170911190025) do
   create_table "routine_exercises", force: :cascade do |t|
     t.integer "routine_id"
     t.integer "exercise_id"
-    t.string "day_of_week"
+    t.integer "days_of_week"
     t.string "string"
     t.integer "sets"
     t.integer "reps"

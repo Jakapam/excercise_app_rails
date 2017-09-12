@@ -8,9 +8,9 @@
 
   #Users
 
-  User.create(first_name: "Justin", last_name: "Man")
-  User.create(first_name: "Ben", last_name: "Lea")
-  User.create(first_name: "Mister", last_name: "Man")
+  User.create(first_name: "Justin", last_name: "Man", username: "test1", password: "test1")
+  User.create(first_name: "Ben", last_name: "Lea", username: "test2", password: "test1")
+  User.create(first_name: "Mister", last_name: "Man", username: "test3", password: "test1")
 
  # Exercises
 
@@ -29,7 +29,7 @@
 
  #Exercise routines
 
- RoutineExercise.create(routine_id: 1, exercise_id: 1, day_of_week: "monday", sets: 4, reps: 12, weight: 135)
- RoutineExercise.create(routine_id: 2, exercise_id: 2, day_of_week: "tuesday", sets: 4, reps: 10, weight: 135)
- RoutineExercise.create(routine_id: 2, exercise_id: 1, day_of_week: "monday", sets: 3, reps: 5, weight: 315)
- RoutineExercise.create(routine_id: 3, exercise_id: 4, day_of_week: "wednesday",sets: 5, reps: 8, weight: 135)
+ RoutineExercise.create(routine_id: 1, exercise_id: 1, days_of_week: 17, sets: 4, reps: 12, weight: 135)
+ RoutineExercise.create(routine_id: 2, exercise_id: 2, days_of_week: 16, sets: 4, reps: 10, weight: 135)
+ RoutineExercise.create(routine_id: 2, exercise_id: 1, days_of_week: 5, sets: 3, reps: 5, weight: 315)
+ RoutineExercise.create(routine_id: 3, exercise_id: 4, days_of_week: 65,sets: 5, reps: 8, weight: 135)

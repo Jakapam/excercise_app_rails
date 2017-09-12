@@ -1,14 +1,15 @@
 class RoutinesController < ApplicationController
 
+    before_action :require_login, only: [:new, :edit, :create, :show]
+
   def new
     @routine = Routine.new
   end
 
   def create
     @routine = Routine.new(routine_params)
-    @routine.user_id = 1
+    @routine.user_id = session[:user_id]
     if @routine.save
-
       redirect_to @routine
     else
       render :new
@@ -17,6 +18,11 @@ class RoutinesController < ApplicationController
 
   def edit
     @routine = Routine.find_by(id: params[:id])
+  end
+
+  def index
+    @user = User.find_by(id: session[:user_id])
+    @routines = Routine.all.where('user_id = ?', @user.id)
   end
 
   def update

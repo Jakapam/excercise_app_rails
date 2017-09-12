@@ -1,6 +1,16 @@
-<%= @user.to_s %>
-<%= @user.username %>
-**PLACEHOLDER***
---View Routines
---Add Routine
+<%= @user.to_s %> <br>
+<%= @user.username %> <br>
+
+
+<% if @routines.size > 1  %>
+  <%= link_to 'View Routines', routines_path%><br>
+<% elsif @routines.size == 1%>
+  <%= link_to 'View Routine', routine_path(@routines.first) %><br>
+<% else %>
+  <p>You currently have no routines, please add a routine using the link below.</p>
+<% end %>
+
+<%= link_to 'Add Routine', new_routine_path %><br>
+
+**PLACEHOLDER*** <br>
 --Challenges

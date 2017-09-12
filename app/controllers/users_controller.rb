@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: :show
+  before_action :require_login, only: [:show, :edit]
   def new
     @user = User.new
   end
@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @routines = @user.routines
   end
 
   def edit
@@ -38,9 +39,9 @@ class UsersController < ApplicationController
   end
 private
 
-def require_login
-  redirect_to "/" unless session.include? :user_id
-end
+# def require_login
+#   redirect_to "/" unless session.include? :user_id
+# end
 
 def user_params
   params.require(:user).permit(:first_name, :last_name, :username, :password )
