@@ -37,6 +37,7 @@ class RoutinesController < ApplicationController
 
   def show
     @routine = Routine.find_by(id: params[:id])
+    @exercises = @routine.routine_exercises
   end
 
   private

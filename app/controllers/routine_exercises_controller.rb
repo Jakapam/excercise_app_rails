@@ -9,21 +9,19 @@ class RoutineExercisesController < ApplicationController
   end
 
   def create
-    @routine_exercise = RoutineExercise.new
-    byebug
-    # @routine.user_id = 1
-    # if @routine.save
-    #
-    #   redirect_to @routine
-    # else
-    #   render :new
-    # end
+    @routine_exercise = RoutineExercise.new(routine_exercise_params) #compact?)
+    @routine_exercise.routine_id = params[:routine_id]
+    if @routine_exercise.save
+      redirect_to routine_path(params[:routine_id])
+    else
+      render :new
+    end
   end
 
  private
 
  def routine_exercise_params
-   params.require(:routine_exercise).permit(:sets, :reps, :weight, :time)
+   params.require(:routine_exercise).permit(:name, :sets, :reps, :weight, :time)
  end
 
 end
