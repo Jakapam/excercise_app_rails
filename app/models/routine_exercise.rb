@@ -15,8 +15,12 @@ class RoutineExercise < ApplicationRecord
   end
 
   def one_rep_max
-    if self.weight >= 1 && self.reps >= 1
-      self.weight * (1 + (self.reps/30))
+    if !!self.weight && !!self.reps
+      if self.reps == 1
+        self.weight
+      else
+        (self.weight.to_f * (1.0 + (self.reps.to_f/30.to_f))).round
+      end
     end
   end
 

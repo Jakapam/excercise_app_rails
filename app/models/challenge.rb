@@ -4,8 +4,15 @@ class Challenge < ApplicationRecord
   belongs_to :challenger, :class_name => "User"
   belongs_to :challengee, :class_name => "User"
 
-  
-
+  def one_rep_max
+    if !!self.weight && !!self.reps
+      if self.reps == 1
+        self.weight
+      else
+        (self.weight.to_f * (1.0 + (self.reps.to_f/30.to_f))).round
+      end
+    end
+  end
 
   def accept
     self.accepted = true

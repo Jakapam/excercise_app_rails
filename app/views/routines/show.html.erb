@@ -5,10 +5,10 @@
   <% exercise_array.each do |exercise| %>
     <h3>- - - </h3>
     <p>Exercise Name:<%= link_to exercise.exercise.name, exercise_path(exercise.exercise) %></p>
-    <p>Sets:<%= exercise.sets %></p>
-    <p> Reps:<%= exercise.reps %></p>
-    <p> Weight:<%= exercise.weight %></p>
-
+    <% if exercise.sets%> <p>Sets: <%= exercise.sets %></p> <% end %>
+    <% if exercise.reps%> <p> Reps: <%= exercise.reps %></p> <% end %>
+    <% if exercise.weight%> <p> Weight: <%= exercise.weight %> lbs</p> <% end %>
+    <% if exercise.one_rep_max%> <p> Estimated One Rep Max (Epley): <%= exercise.one_rep_max %> lbs</p> <% end %>
     <% if @routine.user_id == session[:user_id] && !exercise_array.empty?%>
       <%= link_to 'Remove this Exercise', remove_from_day_path(exercise, :routine_day => "#{day}")%>
     <% end %>

@@ -7,9 +7,10 @@
   <% @issued_challenges.each do |issued| %>
     <p>- - - </p>
     <p>Challenge:<%= link_to issued.exercise.name, exercise_path(issued.exercise) %></p>
-      <p>Sets:<%= issued.sets %></p>
-      <p>Reps:<%= issued.reps %></p>
-      <p>Weight:<%= issued.weight %></p>
+    <% if issued.sets%> <p>Sets: <%= issued.sets %></p> <% end %>
+    <% if issued.reps%> <p> Reps: <%= issued.reps %></p> <% end %>
+    <% if issued.weight%> <p> Weight: <%= issued.weight %> lbs</p> <% end %>
+    <% if issued.one_rep_max%> <p> Estimated One Rep Max (Epley): <%= issued.one_rep_max %> lbs</p> <% end %>
     <p>To: <%= issued.challengee.username %></p>
     <p>Status: <%= issued.completed ? "#{issued.challengee.username.capitalize} DID IT!!!" : "Not yet done"  %></p> <br>
   <% end %>
@@ -31,9 +32,10 @@
   <% @received_challenges.each do |received| %>
     <p>- - - </p>
     <p>Challenge:<%= link_to received.exercise.name, exercise_path(received.exercise) %></p>
-    <p>Sets:<%= received.sets %></p>
-    <p>Reps:<%= received.reps %></p>
-    <p>Weight:<%= received.weight %></p>
+    <% if received.sets%> <p>Sets: <%= received.sets %></p> <% end %>
+    <% if received.reps%> <p> Reps: <%= received.reps %></p> <% end %>
+    <% if received.weight%> <p> Weight: <%= received.weight %> lbs</p> <% end %>
+    <% if received.one_rep_max%> <p> Estimated One Rep Max (Epley): <%= received.one_rep_max %> lbs</p> <% end %>
     <p>From: <%= received.challenger.username %></p>
     <% if @user.id == session[:user_id] %>
       <p>Will you accept this challenge?</p>
@@ -50,9 +52,10 @@
   <% @accepted_challenges.each do |accepted| %>
     <p>- - - </p>
     <p>Challenge:<%= link_to accepted.exercise.name, exercise_path(accepted.exercise) %></p>
-    <p>Sets:<%= accepted.sets %></p>
-    <p>Reps:<%= accepted.reps %></p>
-    <p>Weight:<%= accepted.weight %></p>
+    <% if accepted.sets%> <p>Sets: <%= accepted.sets %></p> <% end %>
+    <% if accepted.reps%> <p> Reps: <%= accepted.reps %></p> <% end %>
+    <% if accepted.weight%> <p> Weight: <%= accepted.weight %> lbs</p> <% end %>
+    <% if accepted.one_rep_max%> <p> Estimated One Rep Max (Epley): <%= accepted.one_rep_max %> lbs</p> <% end %>
     <p>From: <%= accepted.challenger.username %></p>
     <% if @user.id == session[:user_id] %>
       <%=link_to "I actually don't feel too good...", reject_challenge_path(session[:user_id], accepted.id), method: "get"%>
@@ -69,9 +72,10 @@
     <p>- - - </p>
     <p>From: <%= completed.challenger.username %></p>
     <p>Challenge:<%= link_to completed.exercise.name, exercise_path(completed.exercise) %></p>
-    <p>Sets:<%= completed.sets %></p>
-    <p>Reps:<%= completed.reps %></p>
-    <p>Weight:<%= completed.weight %></p>
+    <% if completed.sets%> <p>Sets: <%= completed.sets %></p> <% end %>
+    <% if completed.reps%> <p> Reps: <%= completed.reps %></p> <% end %>
+    <% if completed.weight%> <p> Weight: <%= completed.weight %> lbs</p> <% end %>
+    <% if completed.one_rep_max%> <p> Estimated One Rep Max (Epley): <%= completed.one_rep_max %> lbs</p> <% end %>
   <% end %>
 
 <% end %>
