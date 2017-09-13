@@ -43,6 +43,27 @@ class RoutinesController < ApplicationController
 
   def show
     @exercises = @routine.routine_exercises
+
+    @week_hash = {
+      monday: [],
+      tuesday: [],
+      wednesday: [],
+      thursday: [],
+      friday: [],
+      saturday: [],
+      sunday: []
+    }
+
+    @exercises.each do |exercise|
+      @week_hash[:monday] << exercise if exercise.monday
+      @week_hash[:tuesday] << exercise if exercise.tuesday
+      @week_hash[:wednesday] << exercise if exercise.wednesday
+      @week_hash[:thursday] << exercise if exercise.thursday
+      @week_hash[:friday] << exercise if exercise.friday
+      @week_hash[:saturday] << exercise if exercise.saturday
+      @week_hash[:sunday] << exercise if exercise.sunday
+    end
+
   end
 
   private

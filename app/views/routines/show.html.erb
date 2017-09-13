@@ -1,12 +1,16 @@
 <h2><%= @routine.name %></h2><br>
-<% @exercises.each do |exercise| %>
-<h3>- - - </h3>
-<p>Exercise Name:<%= exercise.exercise.name %></p>
-<p>Sets:<%= exercise.sets %></p>
-<p> Reps:<%= exercise.reps %></p>
-<p> Weight:<%= exercise.weight %></p>
+<% @week_hash.each do |day, exercise_array| %>
 
-<% if @routine.user_id == session[:user_id] %>
+<h3><%= day.to_s.capitalize if !exercise_array.empty? %></h3>
+  <% exercise_array.each do |exercise| %>
+    <h3>- - - </h3>
+    <p>Exercise Name:<%= exercise.exercise.name %></p>
+    <p>Sets:<%= exercise.sets %></p>
+    <p> Reps:<%= exercise.reps %></p>
+    <p> Weight:<%= exercise.weight %></p>
+  <%end%>
+
+<% if @routine.user_id == session[:user_id] && !exercise_array.empty?%>
   <%= link_to 'Remove this Exercise', new_user_routine_routine_exercise_path(@user, @routine) %>
 <% end %>
 
