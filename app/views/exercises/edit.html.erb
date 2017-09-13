@@ -1,0 +1,6 @@
+<h2><%= @exercise.name %></h2>
+
+<%= form_for @exercise do |f|%>
+Description: <%= f.text_area :description %><br>
+<%= f.submit %>
+<% end %>

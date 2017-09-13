@@ -4,15 +4,18 @@
 <h3><%= day.to_s.capitalize if !exercise_array.empty? %></h3>
   <% exercise_array.each do |exercise| %>
     <h3>- - - </h3>
-    <p>Exercise Name:<%= exercise.exercise.name %></p>
+    <p>Exercise Name:<%= link_to exercise.exercise.name, exercise_path(exercise) %></p>
     <p>Sets:<%= exercise.sets %></p>
     <p> Reps:<%= exercise.reps %></p>
     <p> Weight:<%= exercise.weight %></p>
+
+    <% if @routine.user_id == session[:user_id] && !exercise_array.empty?%>
+      <%= link_to 'Remove this Exercise', remove_from_day_path(exercise, :routine_day => "#{day}")%>
+    <% end %>
+
   <%end%>
 
-<% if @routine.user_id == session[:user_id] && !exercise_array.empty?%>
-  <%= link_to 'Remove this Exercise', new_user_routine_routine_exercise_path(@user, @routine) %>
-<% end %>
+
 
 <% end %>
 

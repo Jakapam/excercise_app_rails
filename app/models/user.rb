@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :received_challenges, :class_name => "Challenge", :foreign_key => 'challengee_id'
 
   validates :username, uniqueness: true, presence: true
+  validates :first_name, :last_name, presence: true
 
   has_secure_password
 

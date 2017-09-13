@@ -18,7 +18,7 @@ Username: <%= @user.username %> <br>
 <% if @user.id != session[:user_id] %>
   <%= link_to "See Challenges for #{@user.username} and/or Challenge this User", user_challenges_path(@user) %>
 <% elsif @user.received_challenges.size > @user.completed_challenges.size %>
-  <%= link_to 'You Have Challenges From Friends', user_challenges_path(@user) %>
+  <%= link_to 'Someone has challenged you!', user_challenges_path(@user) %>
 <% elsif !@user.issued_challenges.empty? %>
-  <%= link_to 'Check On Your Issued Challenges', user_challenges_path(@user) %>
+  <%= link_to 'Check on your challenges!', user_challenges_path(@user) %>
 <% end %>

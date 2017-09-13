@@ -6,7 +6,10 @@
   <h2>Issued Challenges: </h2>
   <% @issued_challenges.each do |issued| %>
     <p>- - - </p>
-    <p>Challenge:<%= issued.exercise.name %></p>
+    <p>Challenge:<%= link_to issued.exercise.name, exercise_path(issued.exercise) %></p>
+      <p>Sets:<%= issued.sets %></p>
+      <p>Reps:<%= issued.reps %></p>
+      <p>Weight:<%= issued.weight %></p>
     <p>To: <%= issued.challengee.username %></p>
     <p>Status: <%= issued.completed ? "#{issued.challengee.username.capitalize} DID IT!!!" : "Not yet done"  %></p> <br>
   <% end %>
@@ -17,7 +20,7 @@
 
   <% @rejected_challenges.each do |rejected| %>
     <p>- - - </p>
-    <p>Challenge:<%= rejected.exercise.name %></p>
+    <p>Challenge:<%= link_to rejected.exercise.name, exercise_path(rejected.exercise) %></p>
   <% end %>
 
 <% end %>
@@ -27,7 +30,10 @@
   <h2>Received Challenges: </h2>
   <% @received_challenges.each do |received| %>
     <p>- - - </p>
-    <p>Challenge:<%= received.exercise.name %></p>
+    <p>Challenge:<%= link_to received.exercise.name, exercise_path(received.exercise) %></p>
+    <p>Sets:<%= received.sets %></p>
+    <p>Reps:<%= received.reps %></p>
+    <p>Weight:<%= received.weight %></p>
     <p>From: <%= received.challenger.username %></p>
     <% if @user.id == session[:user_id] %>
       <p>Will you accept this challenge?</p>
@@ -43,7 +49,10 @@
   <h2>Accepted Challenges: </h2>
   <% @accepted_challenges.each do |accepted| %>
     <p>- - - </p>
-    <p>Challenge:<%= accepted.exercise.name %></p>
+    <p>Challenge:<%= link_to accepted.exercise.name, exercise_path(accepted.exercise) %></p>
+    <p>Sets:<%= accepted.sets %></p>
+    <p>Reps:<%= accepted.reps %></p>
+    <p>Weight:<%= accepted.weight %></p>
     <p>From: <%= accepted.challenger.username %></p>
     <% if @user.id == session[:user_id] %>
       <%=link_to "I actually don't feel too good...", reject_challenge_path(session[:user_id], accepted.id), method: "get"%>
@@ -59,7 +68,10 @@
   <% @completed_challenges.each do |completed| %>
     <p>- - - </p>
     <p>From: <%= completed.challenger.username %></p>
-    <p>Challenge:<%= completed.exercise.name %></p>
+    <p>Challenge:<%= link_to completed.exercise.name, exercise_path(completed.exercise) %></p>
+    <p>Sets:<%= completed.sets %></p>
+    <p>Reps:<%= completed.reps %></p>
+    <p>Weight:<%= completed.weight %></p>
   <% end %>
 
 <% end %>

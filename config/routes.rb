@@ -9,14 +9,9 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :routines do
-  #   resources :routine_exercises, only: [:new, :create]
-  # end
-
-  # resources :routine_exercises, except: [:new, :create]
+  get "/routine_exercises/:id/remove" => 'routine_exercises#remove', as: 'remove_from_day'
 
   resources :exercises
-
 
   get "/users/:user_id/challenges/:id/accept" => "challenges#accept", as: 'accept_challenge'
   get "/users/:user_id/challenges/:id/reject" => "challenges#reject", as: 'reject_challenge'

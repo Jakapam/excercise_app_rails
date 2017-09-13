@@ -1,0 +1,4 @@
+<h1><%= @exercise.name %></h1>
+
+<%= @exercise.description %></p>
+<%= link_to (!@exercise.description ? "No description available, please add one!" : "Edit this description"), edit_exercise_path(@exercise) %>

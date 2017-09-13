@@ -1,7 +1,14 @@
 <%= form_for @user do |t|%>
+
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+<% end %>
+
   First Name:<%=t.text_field :first_name%><br>
   Last Name: <%=t.text_field :last_name%><br>
-  Username: <%=t.text_field :username%><br> 
+  Username: <%=t.text_field :username%><br>
   Password:<%=t.text_field :password%><br>
   <%=t.submit%>
 <%end%>
