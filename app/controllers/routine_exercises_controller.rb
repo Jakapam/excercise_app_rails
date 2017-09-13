@@ -18,13 +18,13 @@ class RoutineExercisesController < ApplicationController
     else
       render :new
     end
-    
+
   end
 
  private
 
  def routine_exercise_params
-   params.require(:routine_exercise).permit(:name, :sets, :reps, :weight, :time)
+   params.require(:routine_exercise).permit(:name, :sets, :reps, :weight, :time, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday)
  end
 
 end

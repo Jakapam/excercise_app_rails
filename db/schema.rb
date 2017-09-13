@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20170912162729) do
     t.integer "reps"
     t.float "time"
     t.integer "weight"
+    t.boolean "monday", default: false
+    t.boolean "tuesday", default: false
+    t.boolean "wednesday", default: false
+    t.boolean "thursday", default: false
+    t.boolean "friday", default: false
+    t.boolean "saturday", default: false
+    t.boolean "sunday", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

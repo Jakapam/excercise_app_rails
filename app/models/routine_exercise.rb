@@ -6,7 +6,7 @@ class RoutineExercise < ApplicationRecord
   validates :exercise, presence: true
 
   def name
-    if self.exercise.name
+    if self.exercise
       self.exercise.name
     end
   end
