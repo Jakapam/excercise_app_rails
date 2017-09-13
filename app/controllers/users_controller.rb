@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_login, only: [:show, :edit]
+
   def new
     @user = User.new
   end
@@ -14,7 +15,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.all
+  end
+
   def welcome
+
+    if session[:user_id]
+      redirect_to user_path(session[:user_id])
+    end
 
   end
 
@@ -40,13 +49,11 @@ class UsersController < ApplicationController
     render :welcome
 
   end
-private
 
-# def require_login
-#   redirect_to "/" unless session.include? :user_id
-# end
+  private
 
-def user_params
-  params.require(:user).permit(:first_name, :last_name, :username, :password )
-end
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :username, :password )
+  end
+
 end

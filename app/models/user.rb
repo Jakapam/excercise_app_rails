@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :issued_challenges, :class_name => "Challenge", :foreign_key => 'challenger_id'
   has_many :received_challenges, :class_name => "Challenge", :foreign_key => 'challengee_id'
 
+  validates :username, uniqueness: true, presence: true
+
   has_secure_password
 
   def to_s
@@ -12,11 +14,11 @@ class User < ApplicationRecord
   end
 
   def rejected_challenges
-    self.issued_challenges.where("rejected = 'true'")
+    self.issued_challenges.where(rejected: true)
   end
 
   def accepted_challenges
-    self.received_challenges.where(accepted: true, completed: 'false')
+    self.received_challenges.where(accepted: true, completed: false)
   end
 
   def completed_challenges

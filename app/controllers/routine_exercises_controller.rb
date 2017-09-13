@@ -9,13 +9,16 @@ class RoutineExercisesController < ApplicationController
   end
 
   def create
-    @routine_exercise = RoutineExercise.new(routine_exercise_params) #compact?)
+
+    @routine_exercise = RoutineExercise.new(routine_exercise_params)
     @routine_exercise.routine_id = params[:routine_id]
+
     if @routine_exercise.save
       redirect_to routine_path(params[:routine_id])
     else
       render :new
     end
+    
   end
 
  private

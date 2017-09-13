@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     resources :challenges
   end
 
-
   resources :routines do
     resources :routine_exercises, only: [:new, :create]
   end

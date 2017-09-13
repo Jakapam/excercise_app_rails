@@ -1,48 +1,65 @@
+<h1><%= @user.id == session[:user_id] ? "Your challenges" : "Challenges for #{@user.username.capitalize}" %></h1>
+
+
 <% if !@issued_challenges.empty? %>
 
-<h2>Issued Challenges: </h2>
+  <h2>Issued Challenges: </h2>
   <% @issued_challenges.each do |issued| %>
     <p>- - - </p>
-   <p>Issued Challenge:<%= issued.exercise.name %></p>
-   <% end %>
+    <p>Challenge:<%= issued.exercise.name %></p>
+    <p>To: <%= issued.challengee.username %></p>
+    <p>Status: <%= issued.completed ? "#{issued.challengee.username.capitalize} DID IT!!!" : "Not yet done"  %></p> <br>
+  <% end %>
+
 <% end %>
 
 <% if !@rejected_challenges.empty? %>
 
   <% @rejected_challenges.each do |rejected| %>
     <p>- - - </p>
-   <p>Rejected Challenge:<%= rejected.exercise.name %></p>
-   <% end %>
+    <p>Challenge:<%= rejected.exercise.name %></p>
   <% end %>
 
-
+<% end %>
 
 <% if !@received_challenges.empty? %>
-<h2>Received Challenges: </h2>
+
+  <h2>Received Challenges: </h2>
   <% @received_challenges.each do |received| %>
     <p>- - - </p>
-  <p>Received Challenge:<%= received.exercise.name %></p>
-  <p>Will you accept this challenge?</p>
-  <%=link_to "YES!!!", accept_challenge_path(session[:user_id], received.id), method: "get"%>
-  <%=link_to "Nah, man...", reject_challenge_path(session[:user_id], received.id), method: "get"%>
+    <p>Challenge:<%= received.exercise.name %></p>
+    <p>From: <%= received.challenger.username %></p>
+    <% if @user.id == session[:user_id] %>
+      <p>Will you accept this challenge?</p>
+      <%=link_to "YES!!!", accept_challenge_path(session[:user_id], received.id), method: "get"%>
+      <%=link_to "Nah, man...", reject_challenge_path(session[:user_id], received.id), method: "get"%>
+    <%end%>
+  <% end %>
 
-      <% end %>
-      <%end%>
+<% end %>
 
-  <% if !@accepted_challenges.empty? %>
+<% if !@accepted_challenges.empty? %>
+
   <h2>Accepted Challenges: </h2>
-    <% @accepted_challenges.each do |accepted| %>
-      <p>- - - </p>
-     <p>Accepted Challenge:<%= accepted.exercise.name %></p>
-     <%=link_to "I actually don't feel too good...", reject_challenge_path(session[:user_id], accepted.id), method: "get"%>
-     <%=link_to "I DID IT!!!!!", complete_challenge_path(session[:user_id], accepted.id), method: "get"%>
-     <% end %>
+  <% @accepted_challenges.each do |accepted| %>
+    <p>- - - </p>
+    <p>Challenge:<%= accepted.exercise.name %></p>
+    <p>From: <%= accepted.challenger.username %></p>
+    <% if @user.id == session[:user_id] %>
+      <%=link_to "I actually don't feel too good...", reject_challenge_path(session[:user_id], accepted.id), method: "get"%>
+      <%=link_to "I DID IT!!!!!", complete_challenge_path(session[:user_id], accepted.id), method: "get"%>
     <% end %>
+  <% end %>
 
-    <% if !@completed_challenges.empty? %>
-    <h2>Completed Challenges: </h2>
-      <% @completed_challenges.each do |completed| %>
-        <p>- - - </p>
-       <p>Completed Challenge:<%= completed.exercise.name %></p>
-       <% end %>
-      <% end %>
+<% end %>
+
+<% if !@completed_challenges.empty? %>
+
+  <h2>Completed Challenges: </h2>
+  <% @completed_challenges.each do |completed| %>
+    <p>- - - </p>
+    <p>From: <%= completed.challenger.username %></p>
+    <p>Challenge:<%= completed.exercise.name %></p>
+  <% end %>
+
+<% end %>

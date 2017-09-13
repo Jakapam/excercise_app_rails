@@ -8,4 +8,6 @@
 
 <% end %>
 
-<%= link_to 'Add Exercise to this Routine', new_routine_routine_exercise_path(@routine) %>
+<% if @routine.user_id == session[:user_id] %>
+  <%= link_to 'Add Exercise to this Routine', new_routine_routine_exercise_path(@routine) %>
+<% end %>

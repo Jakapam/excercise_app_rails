@@ -6,17 +6,19 @@ Username: <%= @user.username %> <br>
   <%= link_to 'View Routines', routines_path%><br>
 <% elsif @routines.size == 1%>
   <%= link_to 'View Routine', routine_path(@routines.first) %><br>
-<% else %>
+<% elsif @user.id == session[:user_id] %>
   <p>You currently have no routines, please add a routine using the link below.</p>
 <% end %>
 
-<%= link_to 'Add Routine', new_routine_path %><br>
-
+<% if @user.id == session[:user_id]%>
+  <%= link_to 'Add Routine', new_routine_path %><br>
+<%end%>
  <br>
 
-<% if @user.received_challenges.size == @user.completed_challenges.size %>
+<% if @user.id != session[:user_id] %>
+  <%= link_to "See Challenges for #{@user.username}", user_challenges_path(@user) %>
+<% elsif @user.received_challenges.size > @user.completed_challenges.size %>
   <%= link_to 'You Have Challenges From Friends', user_challenges_path(@user) %>
-  <% elsif !@user.issued_challenges.empty? %>
+<% elsif !@user.issued_challenges.empty? %>
   <%= link_to 'Check On Your Issued Challenges', user_challenges_path(@user) %>
-
-  <% end %>
+<% end %>

@@ -8,7 +8,6 @@ class ChallengesController < ApplicationController
     redirect_to user_challenges_path(@user)
   end
 
-
   def accept
     @challenge.accept
     redirect_to user_challenges_path(@user)
@@ -29,7 +28,7 @@ class ChallengesController < ApplicationController
     @challenge.challenger_id = session[:user_id]
 
     if @challenge.save
-      redirect_to user_challenge_path(@challenge.challenger, @challenge)
+      redirect_to user_challenges_path(@challenge.challenger)
     else
       render :new
     end
@@ -41,8 +40,10 @@ class ChallengesController < ApplicationController
   end
 
   def index
-    @issued_challenges = Challenge.all.where("challenger_id = ? AND completed = 'false' AND accepted = 'false' AND rejected = 'false'", @user.id)
-    @received_challenges = Challenge.all.where("challengee_id = ? AND completed = 'false' AND accepted = 'false' AND rejected = 'false'", @user.id)
+
+    @issued_challenges = @user.issued_challenges.where(completed: false, accepted: false, rejected: false)
+    @received_challenges = @user.received_challenges.where(completed: false, accepted: false, rejected: false)
+    @completed_issued_challenges = @user.issued_challenges.where(completed: true)
 
     @accepted_challenges = @user.accepted_challenges
     @rejected_challenges = @user.rejected_challenges

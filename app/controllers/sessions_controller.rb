@@ -10,10 +10,12 @@ class SessionsController < ApplicationController
     return head(:forbidden) unless @user.authenticate(params[:user][:password])
     session[:user_id] = @user.id
     redirect_to @user
+
   end
 
   def destroy
     session.clear
+    flash[:message] = "Thank you for using our app!"
     redirect_to root_path
   end
 
