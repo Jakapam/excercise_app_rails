@@ -1,5 +1,6 @@
 class RoutineExercisesController < ApplicationController
 
+before_action :set_user
 
 
   def new
@@ -14,17 +15,23 @@ class RoutineExercisesController < ApplicationController
     @routine_exercise.routine_id = params[:routine_id]
 
     if @routine_exercise.save
-      redirect_to routine_path(params[:routine_id])
+      redirect_to user_routine_path(@user,params[:routine_id])
     else
       render :new
     end
-    
+
+  end
+
+  def destroy
+
   end
 
  private
 
  def routine_exercise_params
-   params.require(:routine_exercise).permit(:name, :sets, :reps, :weight, :time)
+   params.require(:routine_exercise).permit(
+   :name, :sets, :reps, :weight, :time,
+   :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday)
  end
 
 end

@@ -1,3 +1,3 @@
 <% @routines.each do |routine| %>
-<%= link_to "#{routine.name}", routine_path(routine) %><br>
+<%= link_to "#{routine.name}", user_routine_path(@user, routine) %><br>
 <%end%>

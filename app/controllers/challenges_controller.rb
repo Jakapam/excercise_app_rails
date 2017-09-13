@@ -30,6 +30,7 @@ class ChallengesController < ApplicationController
     if @challenge.save
       redirect_to user_challenges_path(@challenge.challenger)
     else
+      flash[:message] = "Whoops! Please make you've entered a valid username and/or a valid exercise."
       render :new
     end
 
@@ -58,9 +59,7 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find_by(id: params[:id])
   end
 
-  def set_user
-    @user = User.find_by(id: params[:user_id])
-  end
+
 
   def challenge_params
     params.require(:challenge).permit(:exercise_name, :challengee_name, :exercise_id, :sets, :reps, :weight, :time)

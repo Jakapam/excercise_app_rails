@@ -1,5 +1,5 @@
-<%= form_for @routine do |f|%>
+<%= form_for @routine, url: user_routines_path do |f|%>
 Routine Name: <%= f.text_field :name%>
-  
-<%=f.submit %>
+
+<%=f.submit "Create Routine" %>
 <%end%>

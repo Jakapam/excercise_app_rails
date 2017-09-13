@@ -4,13 +4,16 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :challenges
+    resources :routines do
+      resources :routine_exercises, only: [:new, :create, :destroy]
+    end
   end
 
-  resources :routines do
-    resources :routine_exercises, only: [:new, :create]
-  end
+  # resources :routines do
+  #   resources :routine_exercises, only: [:new, :create]
+  # end
 
-  resources :routine_exercises, except: [:new, :create]
+  # resources :routine_exercises, except: [:new, :create]
 
   resources :exercises
 

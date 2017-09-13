@@ -6,8 +6,12 @@
 <p> Reps:<%= exercise.reps %></p>
 <p> Weight:<%= exercise.weight %></p>
 
+<% if @routine.user_id == session[:user_id] %>
+  <%= link_to 'Remove this Exercise', new_user_routine_routine_exercise_path(@user, @routine) %>
+<% end %>
+
 <% end %>
 
 <% if @routine.user_id == session[:user_id] %>
-  <%= link_to 'Add Exercise to this Routine', new_routine_routine_exercise_path(@routine) %>
+  <%= link_to 'Add Exercise to this Routine', new_user_routine_routine_exercise_path(@user, @routine) %>
 <% end %>

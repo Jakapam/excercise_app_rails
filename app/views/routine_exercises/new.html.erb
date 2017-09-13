@@ -1,12 +1,41 @@
-<%= form_for @routine_exercise, :url => routine_routine_exercises_path(@routine) do |f|%>
+<%= form_for @routine_exercise, :url => user_routine_routine_exercises_path(@user, @routine) do |f|%>
 
-  name: <%= f.text_field :name %><br>
-  Sets: <%= f.number_field :sets %><br>
-  Reps: <%= f.number_field :reps %><br>
-  Weight: <%= f.number_field :weight %><br>
-  Time: <%= f.number_field :time %><br>
+<h1> Choose the days of the week you would like to work out on </h1>
+
+  <%= f.label :monday, "Monday" %>
+  <%= f.check_box :monday %>
+
+  <%= f.label :tuesday, "Tuesday" %>
+  <%= f.check_box :tuesday %>
+
+  <%= f.label :wednesday, "Wednesday" %>
+  <%= f.check_box :wednesday %>
+
+  <%= f.label :thursday, "Thursday" %>
+  <%= f.check_box :thursday %>
+
+  <%= f.label :friday, "Friday" %>
+  <%= f.check_box :friday %>
+
+  <%= f.label :saturday, "Saturday" %>
+  <%= f.check_box :saturday %>
+
+  <%= f.label :sunday, "Sunday" %>
+  <%= f.check_box :sunday %>
+    <%=f.submit "Submit Days "%>
+    <% end %>
+
+<% if @routine_exercise.monday == true  || @routine_exercise.tuesday == true || @routine_exercise.wednesday == true || @routine_exercise.thursday == true  || @routine_exercise.friday == true || @routine_exercise.saturday == true || @routine_exercise.sunday == true %>
+    <%= form_for @routine_exercise, :url => routine_routine_exercises_path(@routine) do |f|%>
+      name: <%= f.text_field :name %><br>
+      Sets: <%= f.number_field :sets %><br>
+      Reps: <%= f.number_field :reps %><br>
+      Weight: <%= f.number_field :weight %><br>
+      Time: <%= f.number_field :time %><br>
 
 
-<%=f.submit "Add Exercise To This Routine"%>
+    <%=f.submit "Add Exercise To This Routine "%>
 
-<%end%>
+    <%end%>
+
+    <%end%>

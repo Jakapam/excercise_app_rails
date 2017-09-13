@@ -12,3 +12,8 @@
 <%=f.submit "Issue Challenge!"%>
 
 <%end%>
+<br>
+
+<% if flash[:message] %>
+  <%= flash[:message] %>
+  <% end %>

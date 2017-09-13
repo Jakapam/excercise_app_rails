@@ -47,7 +47,6 @@ class UsersController < ApplicationController
 
   def destroy
     render :welcome
-
   end
 
   private
