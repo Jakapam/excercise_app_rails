@@ -10,7 +10,6 @@ class CreateChallenges < ActiveRecord::Migration[5.1]
       t.integer :sets
       t.integer :reps
       t.integer :weight
-      t.float :time
 
       t.timestamps
     end

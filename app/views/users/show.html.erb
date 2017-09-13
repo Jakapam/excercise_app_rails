@@ -2,6 +2,23 @@ Real Name: <%= @user.to_s %> <br>
 Username: <%= @user.username %> <br>
 
 
+<!-- Day View -->
+<% if @user.id == session[:user_id]%>
+<h2>Today's Workout</h2>
+  <% if @todays_routines.empty? %>
+    <p>You have no workouts scheduled for today. :-(</p>
+  <% else %>
+  <%  @todays_routines.each do |exercise| %>
+    <h3>- - - </h3>
+    <p>Exercise Name:<%= link_to exercise.exercise.name, exercise_path(exercise.exercise) %></p>
+    <p>Sets:<%= exercise.sets %></p>
+    <p> Reps:<%= exercise.reps %></p>
+    <p> Weight:<%= exercise.weight %></p>
+  <% end %>
+  <% end %>
+
+<%end%>
+
 <% if @routines.size > 1  %>
   <%= link_to 'View Routines', user_routines_path(@user)%><br>
 <% elsif @routines.size == 1%>

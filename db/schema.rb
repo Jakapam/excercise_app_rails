@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20170912162729) do
     t.integer "sets"
     t.integer "reps"
     t.integer "weight"
-    t.float "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,6 +29,8 @@ ActiveRecord::Schema.define(version: 20170912162729) do
   create_table "exercises", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.string "primary_muscle_group"
+    t.string "secondary_muscle_group"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @routines = @user.routines
+    @todays_routines = RoutineExercise.joins(routine: :user).where("#{Time.now.strftime("%A").downcase}".to_sym => true).where("user_id = ?", @user.id)
     @issued_challenges = @user.issued_challenges
   end
 
