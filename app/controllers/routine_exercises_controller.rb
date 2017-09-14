@@ -23,10 +23,17 @@ before_action :set_user
   end
 
   def remove
+
     @routine_exercise = RoutineExercise.find_by(id: params[:id])
     if ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"].include?(params[:routine_day])
       @routine_exercise.send("#{params[:routine_day]}=", false)
-      @routine_exercise.save
+
+      if [@routine_exercise.monday, @routine_exercise.tuesday, @routine_exercise.wednesday, @routine_exercise.thursday, @routine_exercise.friday, @routine_exercise.saturday, @routine_exercise.sunday].any?
+        @routine_exercise.save
+      else
+        @routine_exercise.destroy
+      end
+
       redirect_to user_routine_path(@routine_exercise.routine.user_id, @routine_exercise.routine_id)
     else
       redirect_to user_routine_path(@routine_exercise.routine.user_id, @routine_exercise.routine_id)

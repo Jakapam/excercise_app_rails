@@ -1,5 +1,7 @@
 class ExercisesController < ApplicationController
 
+    before_action :require_login
+
     def show
       @exercise = Exercise.find_by(id: params[:id])
     end

@@ -2,7 +2,7 @@ class RoutinesController < ApplicationController
 
     before_action :set_user
     before_action :set_routine, only: [:show, :edit, :update]
-    before_action :require_login, only: [:new, :edit, :create, :show]
+    before_action :require_login
 
   def new
     @routine = Routine.new

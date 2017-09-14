@@ -1,7 +1,8 @@
 class ChallengesController < ApplicationController
 
   before_action :set_user, :set_challenge
-  before_action :require_login, only: [:new, :create]
+  before_action :require_login
+  before_action :must_be_valid_user, only: [:complete, :accept, :reject]
 
   def complete
     @challenge.complete
