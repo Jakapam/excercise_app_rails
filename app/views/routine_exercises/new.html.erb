@@ -1,65 +1,50 @@
-<div class="card bg-dark text-white mb-sm">
+  <div class="card bg-dark text-white">
 
-  <div class="card-header">
     <%= form_for @routine_exercise, :url => user_routine_routine_exercises_path(@user, @routine) do |f|%>
 
+  <div class="card-header">
     <h2>What days would you like to add this exercise to?</h2>
   </div>
 
+  <div class="card-body">
 
-  <div class="card-body d-flex justify-content-around">
+    <%= f.check_box :monday %>
+    <%= f.label :monday, "Monday" %>
 
+    <%= f.check_box :tuesday %>
+    <%= f.label :tuesday, "Tuesday" %>
 
-<div>
-  <%= f.check_box :monday %>
-  <%= f.label :monday, "Monday" %>
-</div>
-<div>
-  <%= f.check_box :tuesday %>
-  <%= f.label :tuesday, "Tuesday" %>
-</div>
-<div>
-  <%= f.check_box :wednesday %>
-  <%= f.label :wednesday, "Wednesday" %>
-</div>
-<div>
-  <%= f.check_box :thursday %>
-  <%= f.label :thursday, "Thursday" %>
-</div>
-<div>
-  <%= f.check_box :friday %>
-  <%= f.label :friday, "Friday" %>
-</div>
-<div>
-  <%= f.check_box :saturday %>
-  <%= f.label :saturday, "Saturday" %>
-</div>
-<div>
-  <%= f.check_box :sunday %>
-  <%= f.label :sunday, "Sunday" %>
-</div>
-<br>
+    <%= f.check_box :wednesday %>
+    <%= f.label :wednesday, "Wednesday" %>
 
-</div>
-</div>
+    <%= f.check_box :thursday %>
+    <%= f.label :thursday, "Thursday" %>
 
-<div class="card bg-dark text-white">
+    <%= f.check_box :friday %>
+    <%= f.label :friday, "Friday" %>
 
-  <div class="card-header">
+    <%= f.check_box :saturday %>
+    <%= f.label :saturday, "Saturday" %>
 
-<h2>Please enter exercise details</h2>
-</div>
+    <%= f.check_box :sunday %>
+    <%= f.label :sunday, "Sunday" %>
+    <br>
+    <br>
 
-<div class="card-body">
-  <div style= "width: 35%">
+    <h2>Please enter exercise details</h2>
+
+    <br>
+
     Exercise: <%= f.text_field :name,  style: 'float: right' %><br><br>
     Sets: <%= f.number_field :sets,  style: 'float: right' %><br><br>
     Reps: <%= f.number_field :reps,  style: 'float: right' %><br><br>
     Weight(lbs): <%= f.number_field :weight,   style: 'float: right' %><br>
     <br>
-</div>
 
-<%=f.submit "Add Exercise To This Routine", class:"btn btn-secondary btn-lg"%>
-<%end%>
-</div>
+
+    <%=f.submit "Add Exercise To This Routine", class:"btn btn-secondary btn-lg"%>
+    <%end%>
+
+  </div>
+
 </div>
