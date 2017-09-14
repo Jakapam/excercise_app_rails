@@ -14,54 +14,49 @@
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Exercise</a>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto ">
 
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          </li>
+          <% if session[:user_id] %>
+
+
+            <li class="nav-item">
+              <%= link_to 'Profile Page', user_path(session[:user_id]), class: "nav-link"%>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to 'Your Routines', user_routines_path(session[:user_id]), class: "nav-link"%>
+            </li>
+
+            <li class="nav-item">
+              <%=link_to "Users", users_path, class: "nav-link"%>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "CHALLENGE!", new_user_challenge_path(session[:user_id]), class: "nav-link"%>
+            </li>
+
+            <ul class="nav-item nav-right">
+              <%=link_to "Log Out", signout_path, {method: "delete", class: "nav-link"}%>
+            </ul>
+          <%end%>
 
         </ul>
 
-        
+
+
 
       </div>
 
     </nav>
 
-
-
-
-    <% if session[:user_id] %>
-
-      <p><%= link_to "ISSUE CHALLENGE!!!!!", new_user_challenge_path(session[:user_id])%></p>
-
-      <p><%= link_to 'Return to your profile page', user_path(session[:user_id])%></p>
-
-      <p><%= link_to 'View your Exercise Routines', user_routines_path(session[:user_id])%></p>
-
-      <p><%=link_to "Log Out", signout_path, method: "delete"%></p>
-
-      <p><%=link_to "User Index", users_path%> </p>
-
-    <%end%>
-
-    <p><%= "*" *30 %></p>
 
     <%= yield %>
 
