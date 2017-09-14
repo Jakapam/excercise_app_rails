@@ -48,8 +48,7 @@ before_action :set_user, :must_be_valid_user
 
  def routine_exercise_params
    params.require(:routine_exercise).permit(
-   :name, :sets, :reps, :weight, :time,
-   :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday)
+   :name, :sets, :reps, :weight, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday)
  end
 
 end

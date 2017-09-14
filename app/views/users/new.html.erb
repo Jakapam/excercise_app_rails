@@ -1,14 +1,24 @@
+<div class="card bg-dark text-white">
+
+  <div class="card-header">Welcome to MonsterFit</div>
 <%= form_for @user do |t|%>
 
-<% if @user.errors.any? %>
-  <% @user.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-<% end %>
+<div class="card-body">
+  <div style= "width: 35%">
+    <% if @user.errors.any? %>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <% end %>
 
-  First Name:<%=t.text_field :first_name%><br>
-  Last Name:<%=t.text_field :last_name%><br>
-  Username:<%=t.text_field :username%><br>
-  Password:<%=t.password_field :password%><br>
-  <%=t.submit%>
+  First Name:<%=t.text_field :first_name, style: 'float: right'%><br><br>
+  Last Name:<%=t.text_field :last_name, style: 'float: right'%><br><br>
+  Username:<%=t.text_field :username, style: 'float: right'%><br><br>
+  Password:<%=t.password_field :password, style: 'float: right'%><br><br>
+  <%=t.submit "Sign Up", class:"btn btn-secondary btn-lg"%>
 <%end%>
+
+</div>
+</div>
+
+</div>

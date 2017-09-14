@@ -1,6 +1,17 @@
-<br><br><br><br><br><br>
+
+
+<div class="card bg-dark text-white">
+  <div class="card-header">Welcome to MonsterFit</div>
+
+  <div class="card-body">
+    <div style= "width: 35%">
 
 <%=form_tag "/signin", method: 'POST'%>
-Username: <%=text_field_tag 'user[username]'%>
-Password: <%=password_field_tag 'user[password]'%>
-<%=submit_tag 'Sign In'%>
+Username: <%=text_field_tag 'user[username]', nil,  style: 'float: right'%><br><br>
+Password: <%=password_field_tag 'user[password]', nil, style: 'float: right'%><br><br>
+<%=submit_tag 'Sign In', class:"btn btn-secondary btn-lg"%>
+
+
+</div>
+</div>
+</div>

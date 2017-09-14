@@ -1,5 +1,12 @@
-Real Name: <%= @user.to_s %> <br>
-Username: <%= @user.username %> <br>
+<div class="card bg-dark text-white">
+
+<div class="card-header">
+Welcome <%= @user.first_name %>!
+</div>
+
+<div class="card-body">
+  <div style= "width: 35%">
+
 
 
 <!-- Day View -->
@@ -19,6 +26,11 @@ Username: <%= @user.username %> <br>
   <% end %>
 
 <%end%>
+
+
+
+
+
 
 <% if @routines.size > 1  %>
   <%= link_to 'View Routines', user_routines_path(@user)%><br>
@@ -40,3 +52,8 @@ Username: <%= @user.username %> <br>
 <% elsif !@user.issued_challenges.empty? %>
   <%= link_to 'Check on your challenges!', user_challenges_path(@user) %>
 <% end %>
+
+</div>
+</div>
+
+</div>
