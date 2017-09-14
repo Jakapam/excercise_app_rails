@@ -1,34 +1,68 @@
-<%= form_for @routine_exercise, :url => user_routine_routine_exercises_path(@user, @routine) do |f|%>
+<div class="card bg-dark text-white mb-sm">
 
-<h2>What days would you like to add this exercise to?</h2>
-  <%= f.label :monday, "Monday" %>
+  <div class="card-header">
+    <%= form_for @routine_exercise, :url => user_routine_routine_exercises_path(@user, @routine) do |f|%>
+
+    <h2>What days would you like to add this exercise to?</h2>
+  </div>
+
+
+  <div class="card-body d-flex justify-content-around">
+
+
+<div>
   <%= f.check_box :monday %>
-
-  <%= f.label :tuesday, "Tuesday" %>
+  <%= f.label :monday, "Monday" %>
+</div>
+<div>
   <%= f.check_box :tuesday %>
-
-  <%= f.label :wednesday, "Wednesday" %>
+  <%= f.label :tuesday, "Tuesday" %>
+</div>
+<div>
   <%= f.check_box :wednesday %>
-
-  <%= f.label :thursday, "Thursday" %>
+  <%= f.label :wednesday, "Wednesday" %>
+</div>
+<div>
   <%= f.check_box :thursday %>
-
-  <%= f.label :friday, "Friday" %>
+  <%= f.label :thursday, "Thursday" %>
+</div>
+<div>
   <%= f.check_box :friday %>
-
-  <%= f.label :saturday, "Saturday" %>
+  <%= f.label :friday, "Friday" %>
+</div>
+<div>
   <%= f.check_box :saturday %>
-
+  <%= f.label :saturday, "Saturday" %>
+</div>
+<div>
+  <%= f.check_box :sunday %>
   <%= f.label :sunday, "Sunday" %>
+</div>
 <br>
 
-<h2>Please enter exercise details</h2>
-Exercise: <%= f.text_field :name %><br>
-Sets: <%= f.number_field :sets %><br>
-Reps: <%= f.number_field :reps %><br>
-Weight(in Pounds): <%= f.number_field :weight %><br>
+</div>
+</div>
 
-<%=f.submit "Add Exercise To This Routine "%>
+<div class="card bg-dark text-white">
+
+  <div class="card-header">
+
+<h2>Please enter exercise details</h2>
+</div>
+
+<div class="card-body">
+  <div style= "width: 35%">
+    Exercise: <%= f.text_field :name,  style: 'float: right' %><br><br>
+    Sets: <%= f.number_field :sets,  style: 'float: right' %><br><br>
+    Reps: <%= f.number_field :reps,  style: 'float: right' %><br><br>
+    Weight(lbs): <%= f.number_field :weight,   style: 'float: right' %><br>
+    <br>
+</div>
+
+<%=f.submit "Add Exercise To This Routine", class:"btn btn-secondary btn-lg"%>
+
+</div>
+</div>
 
 <!-- <h1> Choose the days of the week you would like to work out on </h1>
 

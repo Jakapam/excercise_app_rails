@@ -2,7 +2,7 @@
 
     <% @week_hash.each do |day, exercise_array| %>
   <%  if !exercise_array.empty? %>
-    <div class="card bg-dark text-white">
+    <div class="card bg-dark text-white mb-sm">
 
       <div class="card-header">
         <%= day.to_s.capitalize %>
@@ -28,6 +28,8 @@
 <% end %>
 
 <% if @routine.user_id == session[:user_id] %>
+<div>
   <%= link_to 'Add Exercise', new_user_routine_routine_exercise_path(@user, @routine), class: "btn btn-secondary brn-md" %>
-  <%= link_to 'Delete', user_routine_path(@user, @routine), {method: "delete", class: "btn btn-danger btn-md"}%>
+  <%= link_to 'Delete Routine', user_routine_path(@user, @routine), {method: "delete", class: "btn btn-danger btn-md", style: "float: right"}%>
+</div
 <% end %>

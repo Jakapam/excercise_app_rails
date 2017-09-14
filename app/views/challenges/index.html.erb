@@ -2,7 +2,7 @@
 
 
 <% if !@issued_challenges.empty? %>
-  <div class="card bg-dark text-white">
+  <div class="card bg-dark text-white mb-sm">
     <div class="card-header">
       <h4>Issued Challenges</h4>
     </div>
@@ -30,7 +30,7 @@
 
 <% if !@rejected_challenges.empty? %>
 
-<div class="card bg-dark text-white">
+<div class="card bg-dark text-white mb-sm">
   <div class="card-header">
     <h4>Rejected Challenges</h4>
   </div>
@@ -44,7 +44,7 @@
 <% end %>
 
 <% if !@received_challenges.empty? %>
-  <div class="card bg-dark text-white">
+  <div class="card bg-dark text-white mb-sm">
       <h4>Received Challenges: </h4>
     </div>
 
@@ -69,14 +69,14 @@
 <% end %>
 
 <% if !@accepted_challenges.empty? %>
-  <div class="card bg-dark text-white">
+  <div class="card bg-dark text-white mb-sm">
     <div class="card-header">
       <h4>Accepted Challenges: </h4>
     </div>
 
     <div class="card-body">
   <% @accepted_challenges.each do |accepted| %>
-    Challenge:<%= link_to accepted.exercise.name, exercise_path(accepted.exercise) %>
+    Challenge: <%= link_to accepted.exercise.name, exercise_path(accepted.exercise) %>
     <% if accepted.sets%><br> Sets: <%= accepted.sets %> <% end %>
     <% if accepted.reps%> <br> Reps: <%= accepted.reps %> <% end %>
     <% if accepted.weight%> <br> Weight: <%= accepted.weight %> lbs <% end %>
@@ -94,7 +94,7 @@
 <% end %>
 
 <% if !@completed_challenges.empty? %>
-  <div class="card bg-dark text-white">
+  <div class="card bg-dark text-white mb-sm">
     <div class="card-header">
       <h4>Completed Challenges: </h4>
     </div>
