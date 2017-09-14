@@ -1,25 +1,33 @@
-<h2><%= @routine.name %></h2><br>
-<% @week_hash.each do |day, exercise_array| %>
+<h2 class= "text-white"><%= @routine.name %></h2><br>
 
-<h3><%= day.to_s.capitalize if !exercise_array.empty? %></h3>
-  <% exercise_array.each do |exercise| %>
-    <h3>- - - </h3>
-    <p>Exercise Name:<%= link_to exercise.exercise.name, exercise_path(exercise.exercise) %></p>
-    <% if exercise.sets%> <p>Sets: <%= exercise.sets %></p> <% end %>
-    <% if exercise.reps%> <p> Reps: <%= exercise.reps %></p> <% end %>
-    <% if exercise.weight%> <p> Weight: <%= exercise.weight %> lbs</p> <% end %>
-    <% if exercise.one_rep_max%> <p> Estimated One Rep Max (Epley): <%= exercise.one_rep_max %> lbs</p> <% end %>
-    <% if @routine.user_id == session[:user_id] && !exercise_array.empty?%>
-      <%= link_to 'Remove this Exercise', remove_from_day_path(exercise, :routine_day => "#{day}")%>
-    <% end %>
+    <% @week_hash.each do |day, exercise_array| %>
+  <%  if !exercise_array.empty? %>
+    <div class="card bg-dark text-white">
 
-  <%end%>
+      <div class="card-header">
+        <%= day.to_s.capitalize %>
+      </div>
 
 
+          <% exercise_array.each do |exercise| %>
+          <div class="card-body">
 
+            <p>Exercise: <%= link_to exercise.exercise.name, exercise_path(exercise.exercise) %></p>
+            <% if exercise.sets%> <p>Sets: <%= exercise.sets %></p> <% end %>
+            <% if exercise.reps%> <p> Reps: <%= exercise.reps %></p> <% end %>
+            <% if exercise.weight%> <p> Weight: <%= exercise.weight %> lbs</p> <% end %>
+            <% if exercise.one_rep_max%> <p> Estimated One Rep Max (Epley): <%= exercise.one_rep_max %> lbs</p> <% end %>
+            <% if @routine.user_id == session[:user_id] && !exercise_array.empty?%>
+              <%= link_to 'Remove', remove_from_day_path(exercise, :routine_day => "#{day}"), class: "btn btn-danger btn-md"%>
+            <% end %>
+          </div>
+
+          <%end%>
+        </div>
+    <%end%>
 <% end %>
 
 <% if @routine.user_id == session[:user_id] %>
-  <%= link_to 'Delete this Routine', user_routine_path(@user, @routine), {method: "delete"}%>
-  <%= link_to 'Add Exercise to this Routine', new_user_routine_routine_exercise_path(@user, @routine) %>
+  <%= link_to 'Add Exercise', new_user_routine_routine_exercise_path(@user, @routine), class: "btn btn-secondary brn-md" %>
+  <%= link_to 'Delete', user_routine_path(@user, @routine), {method: "delete", class: "btn btn-danger btn-md"}%>
 <% end %>

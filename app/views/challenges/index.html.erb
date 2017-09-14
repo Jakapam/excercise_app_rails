@@ -1,81 +1,116 @@
-<h1><%= @user.id == session[:user_id] ? "Your challenges" : "Challenges for #{@user.username.capitalize}" %></h1>
+<h1 class = "text-white"><%= @user.id == session[:user_id] ? "Your challenges" : "Challenges for #{@user.username.capitalize}" %></h1>
 
 
 <% if !@issued_challenges.empty? %>
+  <div class="card bg-dark text-white">
+    <div class="card-header">
+      <h4>Issued Challenges</h4>
+    </div>
 
-  <h2>Issued Challenges: </h2>
+  <div class="card-body">
+
   <% @issued_challenges.each do |issued| %>
-    <p>- - - </p>
-    <p>Challenge:<%= link_to issued.exercise.name, exercise_path(issued.exercise) %></p>
-    <% if issued.sets%> <p>Sets: <%= issued.sets %></p> <% end %>
-    <% if issued.reps%> <p> Reps: <%= issued.reps %></p> <% end %>
-    <% if issued.weight%> <p> Weight: <%= issued.weight %> lbs</p> <% end %>
-    <% if issued.one_rep_max%> <p> Estimated One Rep Max (Epley): <%= issued.one_rep_max %> lbs</p> <% end %>
-    <p>To: <%= issued.challengee.username %></p>
-    <p>Status: <%= issued.completed ? "#{issued.challengee.username.capitalize} DID IT!!!" : "Not yet done"  %></p> <br>
+
+    Challenge: <%= link_to issued.exercise.name, exercise_path(issued.exercise) %>
+    <% if issued.sets%> <br>Sets: <%= issued.sets %> <% end %>
+    <% if issued.reps%> <br>Reps: <%= issued.reps %> <% end %>
+    <% if issued.weight%> <br>Weight: <%= issued.weight %> lbs<% end %>
+    <% if issued.one_rep_max%> <br>Estimated One Rep Max (Epley): <%= issued.one_rep_max %> lbs <% end %>
+    <br><br>
+    To: <%= issued.challengee.username.capitalize %>
+    <br><br>
+    Status: <%= issued.completed ? "#{issued.challengee.username.capitalize} DID IT!" : "Not yet done"  %>
   <% end %>
+
+  </div>
+
+  </div>
 
 <% end %>
 
 <% if !@rejected_challenges.empty? %>
 
+<div class="card bg-dark text-white">
+  <div class="card-header">
+    <h4>Rejected Challenges</h4>
+  </div>
+  <div class="card-body">
+
   <% @rejected_challenges.each do |rejected| %>
-    <p>- - - </p>
-    <p>Challenge:<%= link_to rejected.exercise.name, exercise_path(rejected.exercise) %></p>
+    Challenge:<%= link_to rejected.exercise.name, exercise_path(rejected.exercise) %><br>
   <% end %>
 
+  </div>
 <% end %>
 
 <% if !@received_challenges.empty? %>
+  <div class="card bg-dark text-white">
+      <h4>Received Challenges: </h4>
+    </div>
 
-  <h2>Received Challenges: </h2>
-  <% @received_challenges.each do |received| %>
-    <p>- - - </p>
-    <p>Challenge:<%= link_to received.exercise.name, exercise_path(received.exercise) %></p>
-    <% if received.sets%> <p>Sets: <%= received.sets %></p> <% end %>
-    <% if received.reps%> <p> Reps: <%= received.reps %></p> <% end %>
-    <% if received.weight%> <p> Weight: <%= received.weight %> lbs</p> <% end %>
-    <% if received.one_rep_max%> <p> Estimated One Rep Max (Epley): <%= received.one_rep_max %> lbs</p> <% end %>
-    <p>From: <%= received.challenger.username %></p>
-    <% if @user.id == session[:user_id] %>
-      <p>Will you accept this challenge?</p>
-      <%=link_to "YES!!!", accept_challenge_path(session[:user_id], received.id), method: "get"%>
-      <%=link_to "Nah, man...", reject_challenge_path(session[:user_id], received.id), method: "get"%>
-    <%end%>
-  <% end %>
-
+    <div class="card-body">
+    <% @received_challenges.each do |received| %>
+      Challenge:<%= link_to received.exercise.name, exercise_path(received.exercise) %>
+      <% if received.sets%> <br> Sets: <%= received.sets %> <% end %>
+      <% if received.reps%>  <br>Reps: <%= received.reps %> <% end %>
+      <% if received.weight%> <br>  Weight: <%= received.weight %> lbs <% end %>
+      <% if received.one_rep_max%> <br> Estimated One Rep Max (Epley): <%= received.one_rep_max %> lbs <% end %>
+      <br><br>
+      From: <%= received.challenger.username %>
+      <br><br>
+      <% if @user.id == session[:user_id] %>
+        Will you accept this challenge?
+        <%=link_to "YES!", accept_challenge_path(session[:user_id], received.id), {method: "get", class:"btn btn-success btn-md"}%>
+        <%=link_to "Nah", reject_challenge_path(session[:user_id], received.id), {method: "get", class:"btn btn-danger btn-md"}%>
+      <%end%>
+    <% end %>
+    </div>
+  </div>
 <% end %>
 
 <% if !@accepted_challenges.empty? %>
+  <div class="card bg-dark text-white">
+    <div class="card-header">
+      <h4>Accepted Challenges: </h4>
+    </div>
 
-  <h2>Accepted Challenges: </h2>
+    <div class="card-body">
   <% @accepted_challenges.each do |accepted| %>
-    <p>- - - </p>
-    <p>Challenge:<%= link_to accepted.exercise.name, exercise_path(accepted.exercise) %></p>
-    <% if accepted.sets%> <p>Sets: <%= accepted.sets %></p> <% end %>
-    <% if accepted.reps%> <p> Reps: <%= accepted.reps %></p> <% end %>
-    <% if accepted.weight%> <p> Weight: <%= accepted.weight %> lbs</p> <% end %>
-    <% if accepted.one_rep_max%> <p> Estimated One Rep Max (Epley): <%= accepted.one_rep_max %> lbs</p> <% end %>
-    <p>From: <%= accepted.challenger.username %></p>
+    Challenge:<%= link_to accepted.exercise.name, exercise_path(accepted.exercise) %>
+    <% if accepted.sets%><br> Sets: <%= accepted.sets %> <% end %>
+    <% if accepted.reps%> <br> Reps: <%= accepted.reps %> <% end %>
+    <% if accepted.weight%> <br> Weight: <%= accepted.weight %> lbs <% end %>
+    <% if accepted.one_rep_max%>  <br>Estimated One Rep Max (Epley): <%= accepted.one_rep_max %> lbs <% end %>
+    <br><br>
+    From: <%= accepted.challenger.username %>
+    <br><br>
     <% if @user.id == session[:user_id] %>
-      <%=link_to "I actually don't feel too good...", reject_challenge_path(session[:user_id], accepted.id), method: "get"%>
-      <%=link_to "I DID IT!!!!!", complete_challenge_path(session[:user_id], accepted.id), method: "get"%>
+      <%=link_to "DONE!", complete_challenge_path(session[:user_id], accepted.id), {method: "get", class: "btn btn-success btn-md"}%>
+      <%=link_to "Reject", reject_challenge_path(session[:user_id], accepted.id), {method: "get", class:"btn btn-danger btn-md"}%>
     <% end %>
   <% end %>
-
+    </div>
+  </div>
 <% end %>
 
 <% if !@completed_challenges.empty? %>
+  <div class="card bg-dark text-white">
+    <div class="card-header">
+      <h4>Completed Challenges: </h4>
+    </div>
 
-  <h2>Completed Challenges: </h2>
+  <div class="card-body">
   <% @completed_challenges.each do |completed| %>
-    <p>- - - </p>
-    <p>From: <%= completed.challenger.username %></p>
-    <p>Challenge:<%= link_to completed.exercise.name, exercise_path(completed.exercise) %></p>
-    <% if completed.sets%> <p>Sets: <%= completed.sets %></p> <% end %>
-    <% if completed.reps%> <p> Reps: <%= completed.reps %></p> <% end %>
-    <% if completed.weight%> <p> Weight: <%= completed.weight %> lbs</p> <% end %>
-    <% if completed.one_rep_max%> <p> Estimated One Rep Max (Epley): <%= completed.one_rep_max %> lbs</p> <% end %>
-  <% end %>
 
+    Challenge: <%= link_to completed.exercise.name, exercise_path(completed.exercise) %>
+    <% if completed.sets%> <br>Sets: <%= completed.sets %> <% end %>
+    <% if completed.reps%>  <br> Reps: <%= completed.reps %> <% end %>
+    <% if completed.weight%> <br> Weight: <%= completed.weight %> lbs <% end %>
+    <% if completed.one_rep_max%> <br> Estimated One Rep Max (Epley): <%= completed.one_rep_max %> lbs <% end %>
+    <br><br>
+    From: <%= completed.challenger.username %>
+    <% end %>
+
+  </div>
+</div>
 <% end %>

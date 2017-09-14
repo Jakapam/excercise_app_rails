@@ -1,17 +1,20 @@
 
 <div class="card bg-dark text-white">
-<h1>Routines for <%= @user.username.capitalize %></h1>
+
+  <div class="card-header">
+    Routines for <%= @user.username.capitalize %>
+  </div>
 
 <div class="card-body">
-<% @routines.each do |routine| %>
-<%= link_to "#{routine.name}", user_routine_path(@user, routine) %><br>
-<%end%>
+  <% @routines.each do |routine| %>
+    <%= link_to "#{routine.name}", user_routine_path(@user, routine) %><br>
+  <%end%>
+</div>
+
 </div>
 
 <% if @user.id == session[:user_id]%>
 <br>
 <br>
-  <%= link_to 'Add Routine', new_user_routine_path(@user), class:"btn btn-primary"%><br>
+  <%= link_to 'Add Routine', new_user_routine_path(@user), class:"btn btn-secondary btn-sm"%><br>
 <%end%>
-
-</div>
