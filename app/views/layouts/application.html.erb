@@ -14,7 +14,8 @@
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 
-      <a class="navbar-brand" href="#">Exercise</a>
+      <%=link_to "Exercise", users_path, class: "navbar-brand"%>
+
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,13 +23,12 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 
-        <ul class="navbar-nav mr-auto ">
 
           <% if session[:user_id] %>
-
+          <ul class="navbar-nav mr-auto ">
 
             <li class="nav-item">
-              <%= link_to 'Profile Page', user_path(session[:user_id]), class: "nav-link"%>
+              <%= link_to 'Profile', user_path(session[:user_id]), class: "nav-link"%>
             </li>
 
             <li class="nav-item">
@@ -36,29 +36,33 @@
             </li>
 
             <li class="nav-item">
-              <%=link_to "Users", users_path, class: "nav-link"%>
-            </li>
-
-            <li class="nav-item">
               <%= link_to "CHALLENGE!", new_user_challenge_path(session[:user_id]), class: "nav-link"%>
             </li>
+              </ul>
 
-            <ul class="nav-item nav-right">
+
+              <ul class="navbar-nav   float-right">
+
+            <li class="nav-item float-right">
               <%=link_to "Log Out", signout_path, {method: "delete", class: "nav-link"}%>
-            </ul>
+            </li>
+          </ul>
+
           <%end%>
-
-        </ul>
-
-
 
 
       </div>
 
     </nav>
 
+    <div class="container">
 
-    <%= yield %>
+         <div class="starter-template">
+
+              <%= yield %>
+         </div>
+
+       </div><!-- /.container -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
