@@ -20,5 +20,6 @@
 <% end %>
 
 <% if @routine.user_id == session[:user_id] %>
+  <%= link_to 'Delete this Routine', user_routine_path(@user, @routine), {method: "delete"}%>
   <%= link_to 'Add Exercise to this Routine', new_user_routine_routine_exercise_path(@user, @routine) %>
 <% end %>

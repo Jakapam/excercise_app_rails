@@ -1,8 +1,9 @@
 class RoutinesController < ApplicationController
 
-    before_action :set_user
-    before_action :set_routine, only: [:show, :edit, :update]
-    before_action :require_login
+    before_action :set_user, :require_login
+    before_action :set_routine, only: [:show, :edit, :update, :destroy]
+    before_action :must_be_valid_user, only: [:destroy, :create]
+
 
   def new
     @routine = Routine.new
@@ -11,7 +12,7 @@ class RoutinesController < ApplicationController
   def create
 
     @routine = Routine.new(routine_params)
-    @routine.user_id = session[:user_id]
+    @routine.user = @user
 
     if @routine.save
       redirect_to user_routine_path(@user, @routine)
@@ -64,6 +65,11 @@ class RoutinesController < ApplicationController
       @week_hash[:sunday] << exercise if exercise.sunday
     end
 
+  end
+
+  def destroy
+    @routine.destroy
+    redirect_to user_routines_path(@user)
   end
 
   private

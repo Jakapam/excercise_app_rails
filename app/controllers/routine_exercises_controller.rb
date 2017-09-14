@@ -1,7 +1,6 @@
 class RoutineExercisesController < ApplicationController
 
-before_action :set_user
-
+before_action :set_user, :must_be_valid_user
 
   def new
     @routine_exercise = RoutineExercise.new
