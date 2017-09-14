@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get "/routine_exercises/:id/remove" => 'routine_exercises#remove', as: 'remove_from_day'
+  get "/users/:user_id/routine_exercises/:id/remove" => 'routine_exercises#remove', as: 'remove_from_day'
 
   resources :exercises
 

@@ -18,7 +18,7 @@
             <% if exercise.weight%> <p> Weight: <%= exercise.weight %> lbs</p> <% end %>
             <% if exercise.one_rep_max%> <p> Estimated One Rep Max (Epley): <%= exercise.one_rep_max %> lbs</p> <% end %>
             <% if @routine.user_id == session[:user_id] && !exercise_array.empty?%>
-              <%= link_to 'Remove', remove_from_day_path(exercise, :routine_day => "#{day}"), class: "btn btn-danger btn-md"%>
+              <%= link_to 'Remove', remove_from_day_path(@routine.user_id, exercise, :routine_day => "#{day}"), class: "btn btn-danger btn-md"%>
             <% end %>
           </div>
 
@@ -31,5 +31,5 @@
 <div>
   <%= link_to 'Add Exercise', new_user_routine_routine_exercise_path(@user, @routine), class: "btn btn-secondary brn-md" %>
   <%= link_to 'Delete Routine', user_routine_path(@user, @routine), {method: "delete", class: "btn btn-danger btn-md", style: "float: right"}%>
-</div
+</div>
 <% end %>

@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def set_user
+    @user = User.find_by(id: params[:user_id])
+  end
+
   def must_be_valid_user
     if @user.id != session[:user_id]
       flash[:message] = "Not authorized to make changes or view this page."
@@ -15,8 +19,5 @@ class ApplicationController < ActionController::Base
     redirect_to "/" unless session.include? :user_id
   end
 
-  def set_user
-    @user = User.find_by(id: params[:user_id])
-  end
 
 end
