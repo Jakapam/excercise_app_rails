@@ -11,7 +11,7 @@
 
   <% @issued_challenges.each do |issued| %>
 
-    Challenge: <%= link_to issued.exercise.name, exercise_path(issued.exercise), class: "text-muted" %>
+    Challenge: <%= link_to issued.exercise.name.titleize, exercise_path(issued.exercise), class: "text-muted" %>
     <% if issued.sets%> <br>Sets: <%= issued.sets %> <% end %>
     <% if issued.reps%> <br>Reps: <%= issued.reps %> <% end %>
     <% if issued.weight%> <br>Weight: <%= issued.weight %> lbs<% end %>
@@ -20,6 +20,7 @@
     To: <%=link_to issued.challengee.username.capitalize, user_path(issued.challengee), class: "text-muted" %>
     <br>
     Status: <%= issued.completed ? "#{issued.challengee.username.capitalize} DID IT!" : "Not yet done"  %>
+    <br><br>
   <% end %>
 
   </div>
@@ -37,7 +38,7 @@
   <div class="card-body">
 
   <% @rejected_challenges.each do |rejected| %>
-    Challenge:<%= link_to rejected.exercise.name, exercise_path(rejected.exercise) %><br>
+    Challenge: <%= link_to rejected.exercise.name.titleize, exercise_path(rejected.exercise), class: "text-muted" %><br>
   <% end %>
 
   </div>
@@ -51,7 +52,7 @@
 
     <div class="card-body">
     <% @received_challenges.each do |received| %>
-      Challenge: <%= link_to received.exercise.name, exercise_path(received.exercise), class: "text-muted" %>
+      Challenge: <%= link_to received.exercise.name.titleize, exercise_path(received.exercise), class: "text-muted" %>
       <% if received.sets%> <br> Sets: <%= received.sets %> <% end %>
       <% if received.reps%>  <br>Reps: <%= received.reps %> <% end %>
       <% if received.weight%> <br>  Weight: <%= received.weight %> lbs <% end %>
@@ -62,9 +63,10 @@
       <% if @user.id == session[:user_id] %>
         Will you accept this challenge?
         <%=link_to "YES!", accept_challenge_path(session[:user_id], received.id), {method: "get", class:"btn btn-success btn-md"}%>
-        <%=link_to "Nah", reject_challenge_path(session[:user_id], received.id), {method: "get", class:"btn btn-danger btn-md"}%> <br><br>
+        <%=link_to "Nah", reject_challenge_path(session[:user_id], received.id), {method: "get", class:"btn btn-danger btn-md"}%> <br>
       <%end%>
     <% end %>
+    <br>
     </div>
   </div>
 <% end %>
@@ -77,7 +79,7 @@
 
     <div class="card-body">
   <% @accepted_challenges.each do |accepted| %>
-    Challenge: <%= link_to accepted.exercise.name, exercise_path(accepted.exercise), class: "text-muted" %>
+    Challenge: <%= link_to accepted.exercise.name.titleize, exercise_path(accepted.exercise), class: "text-muted" %>
     <% if accepted.sets%><br> Sets: <%= accepted.sets %> <% end %>
     <% if accepted.reps%> <br> Reps: <%= accepted.reps %> <% end %>
     <% if accepted.weight%> <br> Weight: <%= accepted.weight %> lbs <% end %>
@@ -88,9 +90,10 @@
     <% if @user.id == session[:user_id] %>
       Have you completed this challenge?
       <%=link_to "DONE!", complete_challenge_path(session[:user_id], accepted.id), {method: "get", class: "btn btn-success btn-md"}%>
-      <%=link_to "Give Up", reject_challenge_path(session[:user_id], accepted.id), {method: "get", class:"btn btn-danger btn-md"}%>
+      <%=link_to "Give Up", reject_challenge_path(session[:user_id], accepted.id), {method: "get", class:"btn btn-danger btn-md"}%><br>
     <% end %>
   <% end %>
+  <br>
     </div>
   </div>
 <% end %>
@@ -104,7 +107,7 @@
   <div class="card-body">
   <% @completed_challenges.each do |completed| %>
 
-    Challenge: <%= link_to completed.exercise.name, exercise_path(completed.exercise) %>
+    Challenge: <%= link_to completed.exercise.name.titleize, exercise_path(completed.exercise) %>
     <% if completed.sets%> <br>Sets: <%= completed.sets %> <% end %>
     <% if completed.reps%>  <br> Reps: <%= completed.reps %> <% end %>
     <% if completed.weight%> <br> Weight: <%= completed.weight %> lbs <% end %>
@@ -112,7 +115,7 @@
     <br>
     From: <%=link_to completed.challenger.username.capitalize, user_path(complted.challenger), class: "text-muted" %>
     <% end %>
-
+    <br><br>
   </div>
 </div>
 <% end %>

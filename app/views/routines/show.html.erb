@@ -12,7 +12,7 @@
           <% exercise_array.each do |exercise| %>
           <div class="card-body">
 
-            <p>Exercise: <%= link_to exercise.exercise.name, exercise_path(exercise.exercise), class: "text-muted" %></p>
+            <p>Exercise: <%= link_to exercise.exercise.name.titleize, exercise_path(exercise.exercise), class: "text-muted" %></p>
             <% if exercise.sets%> <p>Sets: <%= exercise.sets %></p> <% end %>
             <% if exercise.reps%> <p> Reps: <%= exercise.reps %></p> <% end %>
             <% if exercise.weight%> <p> Weight: <%= exercise.weight %> lbs</p> <% end %>

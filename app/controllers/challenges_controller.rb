@@ -25,6 +25,7 @@ class ChallengesController < ApplicationController
   end
 
   def create
+
     @challenge = Challenge.new(challenge_params)
     @challenge.challenger_id = session[:user_id]
 
@@ -32,7 +33,7 @@ class ChallengesController < ApplicationController
       redirect_to user_challenges_path(@challenge.challenger)
     else
       flash[:message] = "Whoops! Please make you've entered a valid username and/or a valid exercise."
-      render :new
+      redirect_to new_user_challenge_path(@user)
     end
 
   end

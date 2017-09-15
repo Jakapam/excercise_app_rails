@@ -4,6 +4,10 @@ class ExercisesController < ApplicationController
 
     def show
       @exercise = Exercise.find_by(id: params[:id])
+      if !@exercise
+        flash[:message] = "Sorry, that exercise does not exist in our database"
+        redirect_to users_path
+      end
     end
 
     def edit

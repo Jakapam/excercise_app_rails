@@ -4,6 +4,9 @@ class Challenge < ApplicationRecord
   belongs_to :challenger, :class_name => "User"
   belongs_to :challengee, :class_name => "User"
 
+  validates :exercise_id, presence: true
+  validate :cant_challenge_self
+
   def one_rep_max
     if !!self.weight && !!self.reps
       if self.reps == 1
@@ -45,13 +48,21 @@ class Challenge < ApplicationRecord
 
   def exercise_name
     if self.exercise
-      self.exercise.name
+      self.exercise.name.titleize
     end
   end
 
   def exercise_name=(name)
-    @exercise = Exercise.find_or_create_by(name: name)
+    @exercise = Exercise.find_or_create_by(name: name.downcase)
     self.exercise = @exercise
+  end
+
+  private
+
+  def cant_challenge_self
+    if challenger_id == challengee_id
+      errors.add(:challengee, "Cannot issue challenge to yourself")
+    end
   end
 
 end

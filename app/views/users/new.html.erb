@@ -8,10 +8,24 @@
   <div style= "width: 35%">
 
   <%= form_for @user do |t|%>
-  First Name:<%=t.text_field :first_name, style: 'float: right'%><br><br>
-  Last Name:<%=t.text_field :last_name, style: 'float: right'%><br><br>
-  Username:<%=t.text_field :username, style: 'float: right'%><br><br>
-  Password:<%=t.password_field :password, style: 'float: right'%><br><br>
+  <%=t.label :first_name%>
+  <%=t.text_field :first_name, style: 'float: right'%><br><br>
+
+  <%=t.label :last_name %>
+  <%=t.text_field :last_name, style: 'float: right'%><br><br>
+
+  <%=t.label :username %>
+  <%=t.text_field :username, style: 'float: right'%><br><br>
+
+  <%=t.label :email %>
+  <%=t.text_field :email, style: 'float: right'%><br><br>
+
+  <%=t.label :password %>
+  <%=t.password_field :password, style: 'float: right'%><br><br>
+
+  <%=t.label :password_confirmation %>
+  <%=t.password_field :password_confirmation, style: 'float: right'%><br><br>
+
   <%=t.submit "Sign Up", class:"btn btn-secondary btn-lg"%>
 <%end%>
 

@@ -72,7 +72,9 @@
           <% if flash[:message] || @user.try(:errors).try(:any?) %>
 
            <div class="card alert">
+             <% if flash[:message] %>
               <li><%=flash[:message]%></li>
+              <% end %>
               <% if @user %>
                <% @user.errors.full_messages.each do |message| %>
                 <li><%= message %></li>

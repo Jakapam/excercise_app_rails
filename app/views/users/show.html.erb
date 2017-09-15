@@ -5,7 +5,7 @@
 </div>
 
 <div class="card-body">
-  <div style= "width: 35%">
+  <div style= "width: 50%">
 
 
 
@@ -16,8 +16,7 @@
     <p>You have no workouts scheduled for today. :-(</p>
   <% else %>
   <%  @todays_routines.each do |exercise| %>
-    <h3>- - - </h3>
-    <p>Exercise Name:<%= link_to exercise.exercise.name, exercise_path(exercise.exercise) %></p>
+    <p>Exercise Name: <%= link_to exercise.exercise.name.titleize, exercise_path(exercise.exercise), class: "text-muted" %></p>
       <% if exercise.sets%> <p>Sets: <%= exercise.sets %></p> <% end %>
       <% if exercise.reps%> <p> Reps: <%= exercise.reps %></p> <% end %>
       <% if exercise.weight%> <p> Weight: <%= exercise.weight %> lbs</p> <% end %>
@@ -33,7 +32,7 @@
 <% elsif @routines.size == 1%>
   <%= link_to 'View Routine', user_routine_path(@user,@routines.first), class: "btn btn-info btn-sm" %>
 <% elsif @user.id == session[:user_id] %>
-  <p>You currently have no routines, please add a routine using the link below.</p>
+  <p>You currently have no routines, please add a routine using the button below.</p>
 <% end %>
 
 <% if @user.id == session[:user_id]%>

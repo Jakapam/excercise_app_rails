@@ -5,9 +5,13 @@ class User < ApplicationRecord
   has_many :issued_challenges, :class_name => "Challenge", :foreign_key => 'challenger_id'
   has_many :received_challenges, :class_name => "Challenge", :foreign_key => 'challengee_id'
 
-  validates :username, uniqueness: true, presence: true
-  validates :first_name, :last_name, presence: true
+  before_save { self.email = email.downcase }
 
+  validates :username, uniqueness: true, presence: true, length: {in: 4..15}
+  validates :email, uniqueness: true, presence: true, length: {in: 5..20}
+  validates :first_name, :last_name, presence: true, length: {maximum: 30}
+
+  validates_confirmation_of :password
   has_secure_password
 
   def to_s

@@ -1,16 +1,17 @@
 class RoutineExercise < ApplicationRecord
   belongs_to :routine
   belongs_to :exercise
-
+  
+  validates :exercise_id, presence: true
 
   def name
     if self.exercise
-      self.exercise.name
+      self.exercise.name.titleize
     end
   end
 
   def name=(name)
-    @exercise = Exercise.find_or_create_by(name: name)
+    @exercise = Exercise.find_or_create_by(name: name.downcase)
     self.exercise = @exercise
   end
 

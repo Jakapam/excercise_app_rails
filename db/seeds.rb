@@ -8,9 +8,9 @@
 
   #Users
 
-  User.create(first_name: "Justin", last_name: "Man", username: "test1", password: "test1")
-  User.create(first_name: "Ben", last_name: "Lea", username: "test2", password: "test2")
-  User.create(first_name: "Mister", last_name: "Man", username: "test3", password: "test3")
+  User.create(first_name: "Justin", last_name: "Man", username: "test1", password: "test1", email: "test1@test.com")
+  User.create(first_name: "Ben", last_name: "Lea", username: "test2", password: "test2", email: "test2@test.com")
+  User.create(first_name: "Mister", last_name: "Man", username: "test3", password: "test3", email: "test3@test.com")
 
  # Exercises
 
