@@ -1,8 +1,14 @@
 body { padding-top: 80px;
       text-align: left;
-      background-color: #A7172E;
+      background-color: black;
+      background-image: url('weights.jpg');
+      background-size: cover;
+      background-repeat:no-repeat;
       }
 
+/*Alternate Backgroun Colors*/
+
+/*#A7172E;*/
 /*#003153;*/
 
 .mb-xs {
