@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def welcome
 
     if session[:user_id]
-      redirect_to user_path(session[:user_id])
+      redirect_to users_path
     end
 
   end

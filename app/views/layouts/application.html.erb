@@ -14,7 +14,7 @@
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 
-      <%=link_to "MonsterFit!", users_path, class: "navbar-brand"%>
+      <%=link_to "MonsterFit!", root_path, class: "navbar-brand"%>
 
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,7 @@
           <% if session[:user_id] %>
             <ul class="navbar-nav mr-auto ">
 
-              <li class="nav-item">
+              <li class="nav-item ml-sm">
                 <%= link_to 'Profile', user_path(session[:user_id]), class: "nav-link"%>
               </li>
 
@@ -46,6 +46,7 @@
                 <%=link_to "Log Out #{User.find(session[:user_id]).username.capitalize}", signout_path, {method: "delete", class: "nav-link"}%>
               </li>
             </ul>
+
           <%else%>
             <ul class="navbar-nav float-right">
               <li class="nav-item float-right">
@@ -72,7 +73,7 @@
                <% end %>
               <%end%>
            </div>
-           
+
            <% end %>
 
               <%= yield %>
