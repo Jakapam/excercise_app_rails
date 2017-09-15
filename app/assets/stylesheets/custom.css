@@ -4,6 +4,7 @@ body { padding-top: 80px;
       background-image: url('weights.jpg');
       background-size: cover;
       background-repeat:no-repeat;
+      background-position: top left;
       }
 
 /*Alternate Backgroun Colors*/
