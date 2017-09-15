@@ -1,7 +1,7 @@
 <div class="card bg-dark text-white">
 
 <div class="card-header">
-Welcome <%= @user.first_name %>!
+<h3> <%= @user.username.capitalize%> <h3>
 </div>
 
 <div class="card-body">
@@ -28,29 +28,25 @@ Welcome <%= @user.first_name %>!
 <%end%>
 
 
-
-
-
-
 <% if @routines.size > 1  %>
-  <%= link_to 'View Routines', user_routines_path(@user)%><br>
+  <%= link_to 'View Routines', user_routines_path(@user), class: "btn btn-info btn-sm" %>
 <% elsif @routines.size == 1%>
-  <%= link_to 'View Routine', user_routine_path(@user,@routines.first) %><br>
+  <%= link_to 'View Routine', user_routine_path(@user,@routines.first), class: "btn btn-info btn-sm" %>
 <% elsif @user.id == session[:user_id] %>
   <p>You currently have no routines, please add a routine using the link below.</p>
 <% end %>
 
 <% if @user.id == session[:user_id]%>
-  <%= link_to 'Add Routine', new_user_routine_path(@user) %><br>
+  <%= link_to 'Add Routine ', new_user_routine_path(@user), class: "btn btn-secondary btn-sm" %><br>
 <%end%>
  <br>
 
 <% if @user.id != session[:user_id] %>
-  <%= link_to "See Challenges for #{@user.username} and/or Challenge this User", user_challenges_path(@user) %>
+  <br><%= link_to "Challenges for #{@user.username.capitalize}", user_challenges_path(@user), class: "btn btn-secondary btn-sm"%>
 <% elsif @user.received_challenges.size > @user.completed_challenges.size %>
-  <%= link_to 'Someone has challenged you!', user_challenges_path(@user) %>
+  <%= link_to 'Someone has challenged you!', user_challenges_path(@user), class: "btn btn-danger btn-lg" %>
 <% elsif !@user.issued_challenges.empty? %>
-  <%= link_to 'Check on your challenges!', user_challenges_path(@user) %>
+  <%= link_to 'Check on your challenges!', user_challenges_path(@user), class: "btn btn-warning btn-lg" %>
 <% end %>
 
 </div>

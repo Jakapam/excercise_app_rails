@@ -1,4 +1,11 @@
-<h1><%= @exercise.name %></h1>
+<div class="card bg-dark text-white mb-sm">
+  <div class="card-header">
+    <h1><%= @exercise.name %></h1>
+  </div>
 
-<%= @exercise.description %></p>
-<%= link_to (!@exercise.description ? "No description available, please add one!" : "Edit this description"), edit_exercise_path(@exercise) %>
+  <div class="card-body">
+    <%= @exercise.description %></p>
+    <%= link_to (!@exercise.description ? "No description available, please add one!" : "Edit this description"), edit_exercise_path(@exercise), class:(!@exercise.description ? "btn btn-warning btn-md" : "btn btn-secondary brn-md") %>
+  </div>
+
+</div>

@@ -1,6 +1,18 @@
-<h2><%= @exercise.name %></h2>
+<div class="card bg-dark text-white mb-sm">
+  <div class="card-header">
+    <h2><%= @exercise.name %></h2>
+  </div>
 
-<%= form_for @exercise do |f|%>
-Description: <%= f.text_area :description %><br>
-<%= f.submit %>
-<% end %>
+<div class="card-body">
+  <div class="form-group">
+    <%= form_for @exercise do |f|%>
+    <h4>Description</h4> <br>
+    <%= f.text_area :description, class: "form-control", rows: 7 %><br>
+    <%= f.submit "Submit", class: "btn btn-secondary btn-md" %>
+    <% end %>
+  </div>
+
+</div>
+
+
+</div>

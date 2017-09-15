@@ -1,3 +1,21 @@
+<div class="card bg-dark text-white mb-sm">
+  <div class="card-header">
+    <h1>Who's on MonsterFit?</h1>
+  </div>
+</div>
+
 <% @users.each do |user| %>
-<%= link_to "#{user.username}", user_path(user.id) %> <br>
+<% if user.id != session[:user_id] %>
+  <div class="card bg-dark text-white mb-sm">
+    <div class="card-header">
+      <h4><%= link_to "#{user.username.capitalize}", user_path(user.id), class: "text-muted"%> <br></h4>
+    </div>
+    <div class="card-body">
+      Challenges Issued: <%= user.number_of_issued %> <br>
+      Pending Challenges: <%= user.number_of_pending %> <br>
+      Completed Challenges: <%= user.number_of_completes %> <br>
+    </div>
+  </div>
+  <%end%>
+
 <% end %>

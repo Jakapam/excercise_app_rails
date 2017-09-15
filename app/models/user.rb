@@ -26,4 +26,20 @@ class User < ApplicationRecord
     self.received_challenges.where(completed: true)
   end
 
+  def number_of_issued
+    self.issued_challenges.count
+  end
+
+  def number_of_accepts
+    self.received_challenges.where(accepted: true, completed: false).count
+  end
+
+  def number_of_completes
+    self.received_challenges.where(completed: true).count
+  end
+
+  def number_of_pending
+    number_of_accepts - number_of_completes
+  end
+
 end

@@ -1,16 +1,13 @@
 <div class="card bg-dark text-white">
 
   <div class="card-header">Welcome to MonsterFit</div>
-<%= form_for @user do |t|%>
+
 
 <div class="card-body">
-  <div style= "width: 35%">
-    <% if @user.errors.any? %>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    <% end %>
 
+  <div style= "width: 35%">
+
+  <%= form_for @user do |t|%>
   First Name:<%=t.text_field :first_name, style: 'float: right'%><br><br>
   Last Name:<%=t.text_field :last_name, style: 'float: right'%><br><br>
   Username:<%=t.text_field :username, style: 'float: right'%><br><br>

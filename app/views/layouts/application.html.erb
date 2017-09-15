@@ -14,7 +14,7 @@
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 
-      <%=link_to "Exercise", users_path, class: "navbar-brand"%>
+      <%=link_to "MonsterFit!", users_path, class: "navbar-brand"%>
 
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,29 +25,33 @@
 
 
           <% if session[:user_id] %>
-          <ul class="navbar-nav mr-auto ">
+            <ul class="navbar-nav mr-auto ">
 
-            <li class="nav-item">
-              <%= link_to 'Profile', user_path(session[:user_id]), class: "nav-link"%>
-            </li>
+              <li class="nav-item">
+                <%= link_to 'Profile', user_path(session[:user_id]), class: "nav-link"%>
+              </li>
 
-            <li class="nav-item">
-              <%= link_to 'Your Routines', user_routines_path(session[:user_id]), class: "nav-link"%>
-            </li>
+              <li class="nav-item ml-sm">
+                <%= link_to 'Your Routines', user_routines_path(session[:user_id]), class: "nav-link"%>
+              </li>
 
-            <li class="nav-item">
-              <%= link_to "CHALLENGE!", new_user_challenge_path(session[:user_id]), class: "nav-link"%>
-            </li>
-              </ul>
+              <li class="nav-item ml-sm">
+                <%= link_to " ISSUE CHALLENGE!", new_user_challenge_path(session[:user_id]), class: "nav-link btn btn-danger btn-sm text-white"%>
+              </li>
+            </ul>
 
 
-              <ul class="navbar-nav   float-right">
-
-            <li class="nav-item float-right">
-              <%=link_to "Log Out #{User.find(session[:user_id]).username.capitalize}", signout_path, {method: "delete", class: "nav-link"}%>
-            </li>
-          </ul>
-
+            <ul class="navbar-nav float-right">
+              <li class="nav-item float-right">
+                <%=link_to "Log Out #{User.find(session[:user_id]).username.capitalize}", signout_path, {method: "delete", class: "nav-link"}%>
+              </li>
+            </ul>
+          <%else%>
+            <ul class="navbar-nav float-right">
+              <li class="nav-item float-right">
+                <%=link_to "Sign In", signin_path, {class: "nav-link"}%>
+              </li>
+            </ul>
           <%end%>
 
 
@@ -58,6 +62,18 @@
     <div class="container mp-md">
 
          <div class="starter-template">
+          <% if flash[:message] || @user.try(:errors).try(:any?) %>
+
+           <div class="card alert">
+              <li><%=flash[:message]%></li>
+              <% if @user %>
+               <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+               <% end %>
+              <%end%>
+           </div>
+           
+           <% end %>
 
               <%= yield %>
          </div>

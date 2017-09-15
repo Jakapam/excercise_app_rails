@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :challenges
-    resources :routines do
+    resources :routines, except: :edit do
       resources :routine_exercises, only: [:new, :create, :destroy]
     end
   end

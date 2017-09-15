@@ -7,9 +7,15 @@ class SessionsController < ApplicationController
   def create
 
     @user = User.find_by(username: params[:user][:username])
-    return head(:forbidden) unless @user.authenticate(params[:user][:password])
-    session[:user_id] = @user.id
-    redirect_to @user
+
+    if @user
+      return head(:forbidden) unless @user.authenticate(params[:user][:password])
+      session[:user_id] = @user.id
+      redirect_to @user
+    else
+      flash[:message] = "Please enter a valid username or password"
+      render :new
+    end
 
   end
 

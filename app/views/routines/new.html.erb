@@ -1,12 +1,17 @@
 <div class="card bg-dark text-white">
 
-  <div class="card-body">
-    <div style= "width: 35%">
-
 <%= form_for @routine, url: user_routines_path do |f|%>
-Routine Name: <%= f.text_field :name, style: 'float: right' %><br><br><br>
+<div class="card-header">
+  <h3>Routine Name</h3>
+</div>
+
+<div class="card-body">
+  <div style= "width: 35%">
+    <%= f.text_field :name %> <br><br>
+  </div>
 
 <%=f.submit "Create Routine", class:"btn btn-secondary btn-lg" %>
+</div>
 <%end%>
 
 </div>

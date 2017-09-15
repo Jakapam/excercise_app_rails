@@ -1,18 +1,24 @@
-<%= form_for @challenge, :url => user_challenges_path(@user) do |f|%>
+<div class="card bg-dark text-white mb-sm">
 
-  Enter the username of the person you want to challenge!<br>
-  <%= f.text_field :challengee_name %><br>
+  <div class="card-header">
+    <h3>Give Someone a Challenge!</h3>
+  </div>
 
-  Exercise name: <%= f.text_field :exercise_name %><br>
-  Sets: <%= f.number_field :sets %><br>
-  Reps: <%= f.number_field :reps %><br>
-  Weight: <%= f.number_field :weight %><br>
+  <div class="card-body">
+    <div style= "width: 40%">
 
-<%=f.submit "Issue Challenge!"%>
+      <%= form_for @challenge, :url => user_challenges_path(@user) do |f|%>
+        Username to Challenge <%= f.text_field :challengee_name, style: 'float: right' %><br><br>
+        Exercise name <%= f.text_field :exercise_name, style: 'float: right' %><br><br>
+        Sets <%= f.number_field :sets, style: 'float: right' %><br><br>
+        Reps <%= f.number_field :reps, style: 'float: right' %><br><br>
+        Weight <%= f.number_field :weight, style: 'float: right' %><br><br>
+        <br>
+        <%=f.submit "Issue Challenge!", class: "btn btn-danger btn-lg"%>
+      <%end%>
 
-<%end%>
+    </div>
+  </div>
 <br>
 
-<% if flash[:message] %>
-  <%= flash[:message] %>
-  <% end %>
+</div>

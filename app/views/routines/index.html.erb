@@ -7,14 +7,16 @@
 
 <div class="card-body">
   <% @routines.each do |routine| %>
-    <%= link_to "#{routine.name}", user_routine_path(@user, routine) %><br>
+    <strong><%= link_to "#{routine.name}", user_routine_path(@user, routine), class: "text-muted mb"%></strong><br>
   <%end%>
 </div>
 
+<% if @user.id == session[:user_id]%>
+<div class= "m-blr">
+  <%= link_to 'Add Routine', new_user_routine_path(@user), class:"btn btn-secondary btn-sm"%><br>
 </div>
 
-<% if @user.id == session[:user_id]%>
-<br>
-<br>
-  <%= link_to 'Add Routine', new_user_routine_path(@user), class:"btn btn-secondary btn-sm"%><br>
 <%end%>
+
+
+</div>

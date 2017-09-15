@@ -22,10 +22,6 @@ class RoutinesController < ApplicationController
 
   end
 
-  def edit
-
-  end
-
   def index
     @user = User.find_by(id: session[:user_id])
     @routines = Routine.all.where('user_id = ?', @user.id)
