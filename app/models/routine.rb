@@ -5,6 +5,5 @@ class Routine < ApplicationRecord
   has_many :exercises, through: :routine_exercises
 
   validates :name, presence: true, length: {maximum: 144}
-  validate :user_must_have_unique_routine_names
 
 end
