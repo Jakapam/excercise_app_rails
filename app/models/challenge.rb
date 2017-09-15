@@ -24,6 +24,7 @@ class Challenge < ApplicationRecord
 
   def reject
     self.accepted = false
+    self.rejected = true
     self.save
   end
 

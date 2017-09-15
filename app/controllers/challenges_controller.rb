@@ -16,7 +16,6 @@ class ChallengesController < ApplicationController
 
   def reject
     @challenge.reject
-
     redirect_to user_challenges_path(@user)
   end
 
