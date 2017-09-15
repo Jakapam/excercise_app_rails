@@ -1,4 +1,4 @@
-<h1 class = "text-white"><%= @user.id == session[:user_id] ? "Your Challenges" : "Challenges for " link_to "#{@user.username.capitalize}", user_path(@user) %></h1>
+<h1 class = "text-white"><%= @user.id == session[:user_id] ? "Your Challenges" : "Challenges for #{@user.username.capitalize}"%></h1>
 
 
 <% if !@issued_challenges.empty? %>

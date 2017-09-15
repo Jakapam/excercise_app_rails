@@ -36,8 +36,14 @@
               </li>
 
               <li class="nav-item ml-sm">
-                <%= link_to " ISSUE CHALLENGE!", new_user_challenge_path(session[:user_id]), class: "nav-link btn btn-danger btn-sm text-white"%>
+                <%= link_to "ISSUE CHALLENGE!", new_user_challenge_path(session[:user_id]), class: "nav-link btn btn-danger btn-sm text-white"%>
               </li>
+
+              <% if @user && @user.id != session[:user_id] %>
+                <li class="nav-item ml-sm">
+                  <%= link_to "Go Back to #{@user.username.capitalize}'s Page", user_path(@user), class: "nav-link"%>
+                </li>
+              <%end%>
             </ul>
 
 
